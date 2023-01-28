@@ -1,0 +1,121 @@
+[tool.poetry]
+name = "{{cookiecutter.project_name}}"
+version = "0.1.0"
+description = "{{cookiecutter.project_name}} project."
+authors = []
+packages = [
+    { include = "{{cookiecutter.project_name}}" }
+]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<4.0"
+WTForms = "^3.0"
+uvicorn = { extras = ["standard"], version = "^0.20" }
+passlib = "^1.7"
+Babel = "^2.9"
+pydantic = "^1.9"
+tabler-icons = '*'
+sentry-sdk = "^1.12"
+sqlalchemy = { version = "^2.0", extras = ["asyncio"] }
+starsessions = "^2.0.0"
+starlette-babel = "^0"
+kupala = { git = "https://github.com/alex-oleshkevich/kupala.git" }
+starlette-flash = "*"
+ohmyadmin = "*"
+async-storages = "*"
+redis = "^4.4"
+gunicorn = "^20.1.0"
+uvloop = "^0.17.0"
+
+toronado = "^0.1.0"
+starception = "^1.0"
+limits = "^2.8"
+prometheus-client = "^0.15.0"
+celery = { extras = ["redis"], version = "^5.2.7" }
+celery-stubs = "^0.1.2"
+psycopg2-binary = "^2.9.5"
+alembic = "^1.9"
+timezones = "^2.1.0"
+asyncpg = "^0.27.0"
+httpx = "^0.23.0"
+aioboto3 = "^10.2.0"
+authlib = "^1.2.0"
+mailers = {extras = ["smtp"], version = "^3.0.0"}
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.2"
+pytest-sugar = "^0.9"
+pytest-asyncio = "^0.19"
+pytest-coverage = "^0.0"
+requests = "^2.28.1"
+factory-boy = "^3.2.1"
+types-redis = "^4.3"
+asyncpg-stubs = "^0.27.0"
+black = "^22.10.0"
+mypy = "^0.991"
+types-python-slugify = "^7.0.0.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+#python_files = ["tests.py", "test_*.py", "*_tests.py"]
+norecursedirs = [
+    "node_modules", "frontend", "storage", "dist", ".git",
+    "*/migrations/*", "*/static/*", "docs", ".venv"
+]
+addopts = "--tb=short -s --no-cov-on-fail"
+testpaths = ["tests"]
+filterwarnings = [
+    "ignore::DeprecationWarning",
+]
+
+[tool.black]
+line-length = 120
+include = '\.pyi?$'
+exclude = '''
+(
+    asv_bench/env
+  | \.egg
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.nox
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)
+'''
+
+[tool.mypy]
+disallow_untyped_defs = true
+ignore_missing_imports = true
+files = ["{{cookiecutter.project_name}}"]
+exclude = "/*venv/"
+pretty = true
+show_error_context = true
+show_column_numbers = true
+show_error_codes = true
+plugins = ["pydantic.mypy"]
+
+[tool.isort]
+multi_line_output = 3
+profile = "black"
+line_length = 120
+
+[tool.coverage.report]
+show_missing = true
+exclude_lines = [
+    'if TYPE_CHECKING:',
+    'pragma: no cover',
+    "if __name__ == '__main__':",
+]
+
+[tool.refurb]
+ignore = []
+quiet = true

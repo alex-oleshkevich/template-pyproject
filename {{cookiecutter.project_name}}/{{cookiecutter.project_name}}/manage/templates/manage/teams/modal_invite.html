@@ -1,0 +1,21 @@
+{% import 'lib/forms.html' as forms %}
+
+<form class="modal animated {{ 'show' if form.errors else '' }}" method="post"
+      hx-post="{{ request.url }}"
+      hx-target="this"
+      hx-swap="outerHTML"
+>
+    <div class="modal-dialog">
+        <header>{{ _('Invite team member') }}</header>
+        <main>
+            {{ forms.form_field(form.email) }}
+            {{ forms.form_field(form.message) }}
+        </main>
+        <footer>
+            <button class="btn btn-accent">
+                {{ _('Save') }}
+            </button>
+            <button class="btn btn-text" type="button" @click="closeModal">{{ _('Cancel') }}</button>
+        </footer>
+    </div>
+</form>

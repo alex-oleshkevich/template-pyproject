@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% macro menu_item(text, href) %}
+    <a href="{{ href }}"
+       class="px-4 py-2 text-gray-700 hover:underline font-semibold transition duration-150 ease-in-out">
+        {{ text }}
+    </a>
+{% endmacro %}
+
+{% macro link_button(text, href) %}
+    <a href="{{ href }}"
+       class="px-4 py-2 bg-white hover:bg-gray-100 text-gray-900 rounded-md transition duration-150 ease-in-out font-medium hover:no-underline">
+        {{ text }}
+    </a>
+{% endmacro %}
+
+{% macro primary_link_button(text, href) %}
+    <a
+            href="{{ href }}"
+            class="
+                px-4 py-2 bg-gray-900 hover:bg-gray-700 text-white rounded-md inline-flex items-center
+                transition duration-150 ease-in-out font-medium hover:no-underline
+">
+        {{ text }}
+    </a>
+{% endmacro %}
+
+{% block main %}
+    <header class="flex items-center justify-between max-w-7xl mx-auto py-5 px-3 md:px-0">
+        <!-- logo -->
+        <div>
+            <img src="{{ static_url('logo.svg') }}" alt="" class="h-10">
+        </div>
+
+        <!-- primary navigation -->
+        <nav class="hidden md:block flex items-center gap-1">
+        </nav>
+
+        <!-- actions -->
+        <div class="flex items-center gap-1">
+            {{ link_button('Sign in', url('login')) }}
+            {{ primary_link_button('Register', url('register')) }}
+        </div>
+    </header>
+
+    <main class="px-3 md:px-0">
+        <!-- hero section -->
+        <section class="max-w-7xl mx-auto py-20 mt-20 text-center">
+            <h1 class="text-6xl font-bold max-w-3xl mx-auto">
+                Your next big thing. Make it live right now.
+            </h1>
+            <p class="mt-12 max-w-xl mx-auto leading-7 text-xl text-gray-700">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua.
+            </p>
+
+            <!-- CTA -->
+            <div class="mt-10">
+                {{ primary_link_button('Try FREE now', url('register')) }}
+            </div>
+        </section>
+
+        <!-- media section -->
+        <section class="max-w-7xl mx-auto py-6">
+            <div class="shadow-2xl rounded-lg overflow-hidden">
+                <header class="bg-gray-100 h-12 flex gap-2 items-center px-4">
+                    <div class="bg-red-600 rounded-full h-3 w-3"></div>
+                    <div class="bg-yellow-600 rounded-full h-3 w-3"></div>
+                    <div class="bg-green-600 rounded-full h-3 w-3"></div>
+                </header>
+                <video class="w-full h-full" autoplay playsinline loop width="100%">
+                    <source src="https://tally.sonboardingo/videos/demo/just-type.mp4" type="video/mp4" />
+                </video>
+            </div>
+        </section>
+
+    </main>
+{% endblock %}

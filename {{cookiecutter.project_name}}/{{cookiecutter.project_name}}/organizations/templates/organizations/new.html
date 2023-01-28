@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% import 'lib/forms.html' as forms %}
+
+{% block main %}
+    <header class="px-2 py-2">
+        <div class="max-w-7xl mx-auto">
+            <a href="{{ url('home') }}">
+                <img src="{{ static_url('logo.svg') }}" class="h-8" alt="">
+            </a>
+        </div>
+    </header>
+    <main class="max-w-md mx-auto">
+        <div class="mt-5 flex items-center gap-5 justify-center mb-12">
+            <div class="font-semibold text-xl">{{ page_title }}</div>
+        </div>
+        <form method="post" enctype="multipart/form-data">
+            {{ forms.form_field(form.name) }}
+            {{ forms.form_field(form.support_phone) }}
+            {{ forms.form_field(form.support_email) }}
+            {{ forms.form_field(form.timezone) }}
+            {{ forms.form_field(form.logo) }}
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">
+                    {{ _('Create school') }}
+                </button>
+            </div>
+        </form>
+    </main>
+{% endblock %}

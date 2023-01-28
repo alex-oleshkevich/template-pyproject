@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block main %}
+    <header class="px-2 py-2">
+        <div class="max-w-7xl mx-auto">
+            <a href="{{ url('home') }}">
+                <img src="{{ static_url('logo.svg') }}" class="h-8" alt="">
+            </a>
+        </div>
+    </header>
+    <main class="max-w-lg mx-auto">
+        <div class="mt-5 flex items-center gap-5 justify-center mb-12">
+            <div class="font-semibold text-xl text-center">{{ page_title }}</div>
+        </div>
+        <div class="grid grid-cols-1 gap-3">
+            {% for organization in objects %}
+                <form method="post"
+                      tabindex="0"
+                      @keyup.enter="$el.submit()"
+                      class="rounded-md p-2 flex items-center gap-3 hover:bg-blue-50 cursor-pointer border border-gray-300 hover:border-blue-300"
+                      @click="$el.submit()">
+                    <input type="hidden" name="organization_id" value="{{ organization.id }}">
+                    <div class="h-12 w-24">
+                        {% if organization.logo %}
+                            <img
+                                    class="rounded-md object-cover h-full w-full"
+                                    src="{{ media_url(organization.logo) }}"
+                                    alt=""
+                            >
+                        {% endif %}
+                    </div>
+                    <div>
+                        <div class="text-lg font-medium">{{ organization }}</div>
+                    </div>
+                    <div class="ml-auto">
+                        {{ tabler_icon('arrow-right') }}
+                    </div>
+                </form>
+            {% else %}
+                <div>
+                    <div class="text-gray-500 text-center max-w-sm mx-auto text-sm mb-10">
+                        {% trans %}You have no schools yet. Feel free to create your first one!{% endtrans %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </main>
+{% endblock %}

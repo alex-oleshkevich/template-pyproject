@@ -1,0 +1,475 @@
+{% extends 'base.html' %}
+{% block main %}
+    <div class="max-w-3xl mx-auto space-y-10 pb-20">
+
+        <div>
+            <h3>Alerts</h3>
+            {% for type in ['success', 'warning', 'error', 'info'] %}
+                <div class="alert alert-{{ type }}">
+                    Internos reprehenderit perspiciatis commodi et omnis impedit.
+                </div>
+            {% endfor %}
+        </div>
+
+        <div>
+            <h3>Avatars</h3>
+            <div class="space-x-3 flex items-end">
+                {% for type in ['sm', 'md', 'lg', 'xl'] %}
+                    <div class="avatar avatar-{{ type }} avatar-status avatar-status-red">
+                        <img src="https://images.unsplash.com/photo-1645378999013-95abebf5f3c1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+                    </div>
+                {% endfor %}
+                {% for type in ['sm', 'md', 'lg', 'xl'] %}
+                    <div class="avatar avatar-{{ type }} avatar-status avatar-status-red">
+                        <svg class="h-1/2 w-1/2 text-secondary-400" xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 24 24"
+                             fill="currentColor">
+                            <path d="M7.5 6.5C7.5 8.981 9.519 11 12 11s4.5-2.019 4.5-4.5S14.481 2 12 2 7.5 4.019 7.5 6.5zM20 21h1v-1c0-3.859-3.141-7-7-7h-4c-3.86 0-7 3.141-7 7v1h1 1 14H20z"></path>
+                        </svg>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div>
+            <h3>Badges</h3>
+            <template>
+                <span class="badge badge-red badge-green badge-blue badge-yellow badge-indigo badge-purple badge-pink"></span>
+            </template>
+            <div class="space-x-3 flex items-end">
+                {% for type in ['', 'red', 'yellow', 'green', 'blue', 'indigo', 'purple', 'pink'] %}
+                    <div class="badge badge-{{ type }}">Badge</div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div>
+            <h3>Buttons</h3>
+            <div class="space-x-3 flex items-end">
+                {% for type in ['', 'accent', 'primary', 'danger', 'warning', 'text'] %}
+                    <button type="button" class="btn btn-{{ type }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4">
+                            <path d="M10.75 2.75a.75.75 0 00-1.5 0v8.614L6.295 8.235a.75.75 0 10-1.09 1.03l4.25 4.5a.75.75 0 001.09 0l4.25-4.5a.75.75 0 00-1.09-1.03l-2.955 3.129V2.75z" />
+                            <path d="M3.5 12.75a.75.75 0 00-1.5 0v2.5A2.75 2.75 0 004.75 18h10.5A2.75 2.75 0 0018 15.25v-2.5a.75.75 0 00-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5z" />
+                        </svg>
+                        Button
+                    </button>
+                {% endfor %}
+                <button class="btn btn-icon" type="button">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4">
+                        <path d="M10.75 2.75a.75.75 0 00-1.5 0v8.614L6.295 8.235a.75.75 0 10-1.09 1.03l4.25 4.5a.75.75 0 001.09 0l4.25-4.5a.75.75 0 00-1.09-1.03l-2.955 3.129V2.75z" />
+                        <path d="M3.5 12.75a.75.75 0 00-1.5 0v2.5A2.75 2.75 0 004.75 18h10.5A2.75 2.75 0 0018 15.25v-2.5a.75.75 0 00-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="space-x-3 flex items-end mt-5">
+                <button class="btn btn-block btn-accent">Block button</button>
+            </div>
+        </div>
+
+        <div>
+            <h3>Dividers</h3>
+            <div class="space-y-3">
+                <div class="divider"></div>
+                <div class="divider-center">More</div>
+                <div class="divider-left">More</div>
+                <div class="divider-right">More</div>
+            </div>
+        </div>
+
+        <div class="bg-slate-500">
+            <h3>Modal</h3>
+            <div class="space-y-3 relative">
+                <div class="modal absolute after:absolute">
+                    <div class="modal-dialog">
+                        <header>Modal header</header>
+                        <main>Modal content</main>
+                        <footer>Modal footer</footer>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <h3>Pagination</h3>
+            <div class="space-y-3 relative">
+                <div class="pagination">
+                    <div class="pagination-info">Showing 1-10 of 100 results.</div>
+                    <div class="pagination-controls">
+                        <a href="#">{{ tabler_icon('arrow-left') }} Previous</a>
+                        <a href="#" class="active">1</a>
+                        <span disabled>2</span>
+                        <a href="#">3</a>
+                        <span disabled>...</span>
+                        <a href="#">8</a>
+                        <a href="#">9</a>
+                        <a href="#">Next {{ tabler_icon('arrow-right') }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <h3>Progres</h3>
+            <div class="space-y-3 relative">
+                <div class="progress progress-xxs">
+                    <div class="progress-bar" style="width: 42%"></div>
+                </div>
+                <div class="progress progress-xs">
+                    <div class="progress-bar" style="width: 42%"></div>
+                </div>
+                <div class="progress progress-sm">
+                    <div class="progress-bar" style="width: 42%"></div>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar" style="width: 42%"></div>
+                </div>
+                <div class="progress progress-lg">
+                    <div class="progress-bar" style="width: 42%"></div>
+                </div>
+
+                <h4>Intermediate</h4>
+                <div class="progress progress-indeterminate progress-xxs">
+                    <div class="progress-bar"></div>
+                </div>
+                <div class="progress progress-indeterminate progress-xs">
+                    <div class="progress-bar"></div>
+                </div>
+                <div class="progress progress-indeterminate progress-sm">
+                    <div class="progress-bar"></div>
+                </div>
+                <div class="progress progress-indeterminate progress-md">
+                    <div class="progress-bar"></div>
+                </div>
+                <div class="progress progress-indeterminate progress-lg">
+                    <div class="progress-bar"></div>
+                </div>
+
+                <h4>Square</h4>
+                <div class="progress progress-square">
+                    <div class="progress-bar" style="width: 42px"></div>
+                </div>
+                <div class="progress progress-square progress-indeterminate">
+                    <div class="progress-bar"></div>
+                </div>
+
+                <h4>Colored</h4>
+                <div class="progress">
+                    <div class="progress-bar bg-red-500" style="width: 42%"></div>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar bg-green-500" style="width: 42%"></div>
+                </div>
+            </div>
+        </div>
+
+
+        <div>
+            <h3>Tabs</h3>
+            <div class="space-y-4 relative">
+                <div class="tabs">
+                    <div class="tab">Tab</div>
+                    <div class="tab active">Active tab</div>
+                    <div class="tab disabled">Disabled tab</div>
+                    <div class="tab">
+                        Badge <span class="badge">8</span>
+                    </div>
+                    <div class="tab">
+                        {{ tabler_icon('settings') }}
+                        Icon
+                    </div>
+                </div>
+                <div class="tabs tabs-pills">
+                    <div class="tab">Tab</div>
+                    <div class="tab active">Active tab</div>
+                    <div class="tab disabled">Disabled tab</div>
+                    <div class="tab">
+                        Badge <span class="badge">8</span>
+                    </div>
+                    <div class="tab">
+                        {{ tabler_icon('settings') }}
+                        Icon
+                    </div>
+                </div>
+                <div class="tabs tabs-bg">
+                    <div class="tab">Tab</div>
+                    <div class="tab active">Active tab</div>
+                    <div class="tab disabled">Disabled tab</div>
+                    <div class="tab">
+                        Badge <span class="badge">8</span>
+                    </div>
+                    <div class="tab">
+                        {{ tabler_icon('settings') }}
+                        Icon
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <h3>Table</h3>
+            <div class="space-y-3 relative">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Email</th>
+                        <th>Name</th>
+                        <th>Date</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>me@example.com</td>
+                        <td>Root</td>
+                        <td>1 Jan</td>
+                        <td>
+                            <a href="#">Edit</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>me@example.com</td>
+                        <td>Root</td>
+                        <td>1 Jan</td>
+                        <td>
+                            <a href="#">Edit</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>me@example.com</td>
+                        <td>Root</td>
+                        <td>1 Jan</td>
+                        <td>
+                            <a href="#">Edit</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div>
+            <h3>Checkboxes</h3>
+            <div class="space-y-3 relative">
+                <div class="form-check">
+                    <input type="checkbox" id="check" checked>
+                    <label for="check">
+                        Checkbox
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" id="check" disabled checked>
+                    <label for="check">
+                        Checkbox
+                    </label>
+                </div>
+                <div class="form-group">
+                    <div class="form-check">
+                        <input type="checkbox" id="check" checked>
+                        <label for="check">
+                            Checkbox
+                        </label>
+                    </div>
+                    <div class="form-help">This is a help message.</div>
+                    <div class="form-errors">This is an error message.</div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <h3>Toggles</h3>
+            <div class="space-y-3 relative">
+                <label for="example1" class="relative inline-flex cursor-pointer items-center">
+                    <input type="checkbox" id="example1" class="peer sr-only" />
+                    <div class="h-6 w-11 rounded-full bg-gray-100 after:absolute after:top-0.5 after:left-0.5 after:h-5 after:w-5 after:rounded-full after:bg-white after:shadow after:transition-all after:content-[''] hover:bg-gray-200 peer-checked:bg-blue-600 peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:ring-4 peer-focus:ring-blue-200 peer-disabled:cursor-not-allowed peer-disabled:bg-gray-100 peer-disabled:after:bg-gray-50"></div>
+                </label>
+
+                <label for="example2" class="relative inline-flex cursor-pointer items-center">
+                    <input type="checkbox" id="example2" class="peer sr-only" disabled />
+                    <div class="h-6 w-11 rounded-full bg-gray-100 after:absolute after:top-0.5 after:left-0.5 after:h-5 after:w-5 after:rounded-full after:bg-white after:shadow after:transition-all after:content-[''] hover:bg-gray-200 peer-checked:bg-blue-600 peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:ring-4 peer-focus:ring-blue-200 peer-disabled:cursor-not-allowed peer-disabled:bg-gray-100 peer-disabled:after:bg-gray-50"></div>
+                </label>
+            </div>
+        </div>
+
+        <div>
+            <h3>Radio</h3>
+            <div class="space-y-3 relative">
+                <div class="form-check">
+                    <input type="radio" id="radio" name="radio" checked>
+                    <label for="radio">
+                        Checkbox
+                    </label>
+                </div>
+                <div class="form-group">
+                    <div class="form-check">
+                        <input type="radio" id="radio3" name="radio">
+                        <label for="radio3">
+                            Checkbox
+                        </label>
+                    </div>
+                    <div class="form-help">This is a help message.</div>
+                    <div class="form-errors">This is an error message.</div>
+                </div>
+                <div class="form-check">
+                    <input type="radio" id="radio2" name="radio2" disabled checked>
+                    <label for="radio2">
+                        Disabled Checkbox
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <h3>Inputs</h3>
+            <div class="space-y-3 relative">
+                <div class="form-group">
+                    <label for="text">Text Input</label>
+                    <input type="text" id="text" placeholder="Enter text here...">
+                </div>
+                <div class="form-group">
+                    <label for="textarea">Textarea Input</label>
+                    <textarea id="textarea"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="select">Select Input</label>
+                    <select id="select">
+                        <option>Option 1</option>
+                        <option>Option 2</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="text2">Text Input</label>
+                    <input type="text" id="text2" placeholder="Enter text here..." disabled>
+                </div>
+                <div class="form-group">
+                    <label for="text3">Text Input</label>
+                    <input type="text" id="text3" placeholder="Enter text here...">
+                    <div class="form-help">This is a help message.</div>
+                    <div class="form-errors">This is an error message.</div>
+                </div>
+                <div class="flex items-center gap-1">
+                    <input type="text" placeholder="Enter text here...">
+                    <button type="button" class="btn">Submit</button>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <h3>Breadcrumbs</h3>
+            <div class="space-y-3 relative">
+                <nav class="breadcrumbs">
+                    <uL>
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li>
+                            <span class="text-slate-400">/</span>
+                            <a href="#">Components</a>
+                        </li>
+                        <li>
+                            <span class="text-slate-400">/</span>
+                            <a href="#">Breadcrumb</a>
+                        </li>
+                    </uL>
+                </nav>
+                <nav class="breadcrumbs">
+                    <uL>
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li>
+                            <svg class="h-6 w-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                      d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                      clip-rule="evenodd"></path>
+                            </svg>
+                            <a href="#">Components</a>
+                        </li>
+                        <li>
+                            <svg class="h-6 w-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                      d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                      clip-rule="evenodd"></path>
+                            </svg>
+                            <a href="#">Breadcrumb</a>
+                        </li>
+                    </uL>
+                </nav>
+            </div>
+        </div>
+
+        <div>
+            <h3>List menu</h3>
+            <div class="space-y-3 relative">
+                <div class="w-64">
+                    <div class="list-menu">
+                        <div class="list-menu-item">Simple item</div>
+                        <div class="list-menu-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                 class="h-4 w-4">
+                                <path d="M10.75 2.75a.75.75 0 00-1.5 0v8.614L6.295 8.235a.75.75 0 10-1.09 1.03l4.25 4.5a.75.75 0 001.09 0l4.25-4.5a.75.75 0 00-1.09-1.03l-2.955 3.129V2.75z"></path>
+                                <path d="M3.5 12.75a.75.75 0 00-1.5 0v2.5A2.75 2.75 0 004.75 18h10.5A2.75 2.75 0 0018 15.25v-2.5a.75.75 0 00-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5z"></path>
+                            </svg>
+                            With left icon
+                        </div>
+                        <div class="list-menu-item">
+                            <span>With right icon</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                 class="h-4 w-4">
+                                <path d="M10.75 2.75a.75.75 0 00-1.5 0v8.614L6.295 8.235a.75.75 0 10-1.09 1.03l4.25 4.5a.75.75 0 001.09 0l4.25-4.5a.75.75 0 00-1.09-1.03l-2.955 3.129V2.75z"></path>
+                                <path d="M3.5 12.75a.75.75 0 00-1.5 0v2.5A2.75 2.75 0 004.75 18h10.5A2.75 2.75 0 0018 15.25v-2.5a.75.75 0 00-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5z"></path>
+                            </svg>
+                        </div>
+                        <div class="list-menu-item disabled">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                 class="h-4 w-4">
+                                <path d="M10.75 2.75a.75.75 0 00-1.5 0v8.614L6.295 8.235a.75.75 0 10-1.09 1.03l4.25 4.5a.75.75 0 001.09 0l4.25-4.5a.75.75 0 00-1.09-1.03l-2.955 3.129V2.75z"></path>
+                                <path d="M3.5 12.75a.75.75 0 00-1.5 0v2.5A2.75 2.75 0 004.75 18h10.5A2.75 2.75 0 0018 15.25v-2.5a.75.75 0 00-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5z"></path>
+                            </svg>
+                            Disabled
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <h3>Dropdown menu</h3>
+            <div class="space-y-3 relative">
+                <div class="dropdown">
+                    <div class="list-menu">
+                        <a href="#" class="list-menu-item">A link</a>
+                        <button class="list-menu-item">A button</button>
+                        <div class="list-menu-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                 class="h-4 w-4">
+                                <path d="M10.75 2.75a.75.75 0 00-1.5 0v8.614L6.295 8.235a.75.75 0 10-1.09 1.03l4.25 4.5a.75.75 0 001.09 0l4.25-4.5a.75.75 0 00-1.09-1.03l-2.955 3.129V2.75z"></path>
+                                <path d="M3.5 12.75a.75.75 0 00-1.5 0v2.5A2.75 2.75 0 004.75 18h10.5A2.75 2.75 0 0018 15.25v-2.5a.75.75 0 00-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5z"></path>
+                            </svg>
+                            With left icon
+                        </div>
+                        <div class="list-menu-item">
+                            <span>With right icon</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                 class="h-4 w-4">
+                                <path d="M10.75 2.75a.75.75 0 00-1.5 0v8.614L6.295 8.235a.75.75 0 10-1.09 1.03l4.25 4.5a.75.75 0 001.09 0l4.25-4.5a.75.75 0 00-1.09-1.03l-2.955 3.129V2.75z"></path>
+                                <path d="M3.5 12.75a.75.75 0 00-1.5 0v2.5A2.75 2.75 0 004.75 18h10.5A2.75 2.75 0 0018 15.25v-2.5a.75.75 0 00-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5z"></path>
+                            </svg>
+                        </div>
+                        <div class="list-menu-item disabled">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                 class="h-4 w-4">
+                                <path d="M10.75 2.75a.75.75 0 00-1.5 0v8.614L6.295 8.235a.75.75 0 10-1.09 1.03l4.25 4.5a.75.75 0 001.09 0l4.25-4.5a.75.75 0 00-1.09-1.03l-2.955 3.129V2.75z"></path>
+                                <path d="M3.5 12.75a.75.75 0 00-1.5 0v2.5A2.75 2.75 0 004.75 18h10.5A2.75 2.75 0 0018 15.25v-2.5a.75.75 0 00-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5z"></path>
+                            </svg>
+                            Disabled
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

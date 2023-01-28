@@ -1,0 +1,26 @@
+{% extends 'kupala_mail/base.html' %}
+{% import 'kupala_mail/components.html' as mails %}
+
+{% block before_main %}
+    <div style="margin-bottom: 24px" class="logo">
+        {% call mails.center() %}
+            {% include 'mail/logo.svg' %}
+        {% endcall %}
+    </div>
+{% endblock %}
+
+{% block content %}
+    {{ super() }}
+{% endblock %}
+
+{% block after_main %}
+    {% call mails.center() %}
+        <hr />
+        <p class="text-center text-muted">
+            <small>
+                Takinada.io <br>
+                &copy; All rights reserved.
+            </small>
+        </p>
+    {% endcall %}
+{% endblock %}

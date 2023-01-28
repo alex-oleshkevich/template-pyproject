@@ -1,0 +1,105 @@
+version: "3"
+
+vars:
+    PROJECT: {{cookiecutter.project_name}}
+    GITHUB_USERNAME: alex-oleshkevich
+    REPO_URL: "https://github.com/{{ .GITHUB_USERNAME }}/{{ .PROJECT }}"
+    DOCKER_IMAGE: "ghcr.io/{{ .GITHUB_USERNAME }}/{{ .PROJECT }}"
+
+    GIT_BRANCH:
+        sh: "[[ -z $CI_BUILD_REF_NAME ]] && git rev-parse --symbolic-full-name --abbrev-ref HEAD || echo $CI_BUILD_REF_NAME"
+    GIT_REVISION:
+        sh: "[[ -z $CI_COMMIT_SHORT_SHA ]] && git rev-parse --short HEAD || echo $CI_COMMIT_SHORT_SHA"
+    RELEASE_ID: "{{ .GIT_REVISION }}"
+    DATE: '{{ now | date "2006-01-02 15:04:05" }}'
+
+includes:
+    tf: ./deploy/terraform
+    ansible:
+        taskfile: ./deploy/ansible/
+        vars:
+            APP_DOCKER_IMAGE: "{{ .DOCKER_IMAGE }}:{{ .RELEASE_ID }}"
+
+tasks:
+    build:
+        desc: "Build a Docker image."
+        env:
+            DOCKER_BUILDKIT: 1
+        cmds:
+            - docker pull {{ .DOCKER_IMAGE }}:{{ .GIT_BRANCH }} || true
+            - >
+                docker build
+                --build-arg REPO_URL={{ .REPO_URL }}
+                --build-arg RELEASE_ID={{ .RELEASE_ID }}
+                --build-arg CI_COMMIT_REF_SLUG={{ .GIT_BRANCH }}
+                --build-arg CI_COMMIT_SHA={{ .VERSION_TAG }}
+                --build-arg CI_BUILD_DATE="{{ .DATE }}"
+                --cache-from {{ .DOCKER_IMAGE }}:{{ .GIT_BRANCH }}
+                -t {{ .DOCKER_IMAGE }}:{{ .GIT_BRANCH }}
+                -t {{ .DOCKER_IMAGE }}:{{ .RELEASE_ID }}
+                .
+
+    push:
+        desc: "Push built images."
+        cmds:
+            - docker push {{ .DOCKER_IMAGE }}:{{ .GIT_BRANCH }}
+            - docker push {{ .DOCKER_IMAGE }}:{{ .RELEASE_ID }}
+
+    deploy:
+        desc: "Release an application."
+        cmds:
+            - task: "ansible:deploy"
+
+    release:
+        desc: "Build and push images"
+        cmds:
+            - task: build
+            - task: push
+            - task: deploy
+
+    rollout:
+        desc: "Rollout the application to production."
+        silent: true
+        cmds:
+            - >
+                if git diff-index --quiet HEAD --; then
+
+                else
+                    echo git has unstaged changes
+                    exit 1
+                fi
+            - task: test
+            - task: release
+            - task: deploy
+
+    messages:init:
+        desc: "Extract translation messages from sources"
+        vars:
+            DOMAIN: '{{ default "messages" .DOMAIN }}'
+            LOCALE: "{{ .LOCALE }}"
+        cmds:
+            - pybabel init -D {{ .DOMAIN }} -l {{ .LOCALE }} -d {{ .PROJECT }}/locales/ -i {{ .PROJECT }}/locales/{{ .DOMAIN }}.pot
+
+    messages:extract:
+        desc: "Extract translation messages from sources"
+        cmds:
+            - pybabel extract -F pybabel.ini -o {{ .PROJECT }}/locales/messages.pot {{ .PROJECT }}
+
+    messages:compile:
+        desc: "Compile translation messages from sources"
+        cmds:
+            - pybabel compile -d {{ .PROJECT }}/locales/
+
+    messages:update:
+        desc: "Update message catalogs from template"
+        vars:
+            DOMAIN: '{{ default "messages" .DOMAIN }}'
+            LOCALE: "{{ .LOCALE }}"
+        cmds:
+            - pybabel update -D {{ .DOMAIN }} -d {{ .PROJECT }}/locales/ -i {{ .PROJECT }}/locales/{{ .DOMAIN }}.pot
+
+    messages:sync:
+        desc: "Extract and update messages"
+        cmds:
+            - { task: "messages:extract" }
+            - { task: "messages:update" }

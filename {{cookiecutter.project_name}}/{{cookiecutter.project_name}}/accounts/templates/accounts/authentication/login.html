@@ -1,0 +1,39 @@
+{% extends 'accounts/layout.html' %}
+{% import 'lib/forms.html' as forms %}
+
+{% block content %}
+    <form method="post">
+        {% if error_message %}
+            <div class="alert alert-danger mb-10">{{ error_message }}</div>
+        {% endif %}
+        {{ csrf_input }}
+        {{ forms.form_field(form.email) }}
+        {{ forms.form_field(form.password) }}
+        {{ forms.form_field(form.remember_me) }}
+        <button type="submit" class="btn btn-primary btn-block w-full justify-center">
+            {{ _('Sign in') }}
+        </button>
+    </form>
+
+    <div class="mt-12">
+        <a href="{{ url('social_login.request.google') }}" class="btn w-full text-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-google" width="40"
+                 height="40" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none"
+                 stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M17.788 5.108a9 9 0 1 0 3.212 6.892h-8"></path>
+            </svg>
+            {{ 'Sign in with {provider}'.format(provider='Google') }}
+        </a>
+    </div>
+{% endblock %}
+
+{% block footer %}
+    {{ _("Don't have an account?") }}
+    <a href="{{ url('register') }}" class="link">{{ _("Sign up") }}</a>
+    <br />
+    <br />
+    <a href="{{ url('forgot_password') }}" class="link">
+        {{ _('Forgot password?') }}
+    </a>
+{% endblock %}

@@ -1,0 +1,33 @@
+name: Deploy only
+
+on:
+    workflow_dispatch:
+
+env:
+    REGISTRY: ghcr.io
+    IMAGE_NAME: "${{ github.repository }}"
+
+jobs:
+
+    release:
+        runs-on: ubuntu-latest
+        if: "${{ github.ref_name }} == 'master'"
+        steps:
+            -   uses: actions/checkout@v3
+
+            -   name: Setup Ansible
+                uses: ./.github/actions/setup-ansible
+                with:
+                    ssh_private_key: '${{ secrets.ANSIBLE_SSH_PRIVATE_KEY }}'
+                    vault_password: '${{ secrets.ANSIBLE_VAULT_PASSWORD }}'
+                    hosts: '${{ secrets.ANSIBLE_HOSTS }}'
+
+            -   name: Check that image exists
+                uses: docker/metadata-action@v4
+                with:
+                    images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+
+            -   name: Release application
+                uses: ./.github/actions/release
+                with:
+                    docker_image: '${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}'

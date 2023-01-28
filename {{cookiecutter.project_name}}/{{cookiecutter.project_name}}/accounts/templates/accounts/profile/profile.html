@@ -1,0 +1,63 @@
+{% extends 'manage/layout.html' %}
+{% import 'lib/forms.html' as forms %}
+
+{% block content %}
+    <div class="grid grid-cols-1 md:grid-cols-1 gap-6 max-w-lg w-full mx-auto">
+        <form method="post">
+            <section class="form-section">
+                <header class="py-4 border-b border-gray-200 font-medium mb-6 text-lg">
+                    <h3>{{ _('Your information') }}</h3>
+                </header>
+                <main>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-5">
+                        {{ forms.form_field(profile_form.first_name) }} {{ forms.form_field(profile_form.last_name) }}
+                        <div class="form-group col-span-full">
+                            <label>Email</label>
+                            <input
+                                    type="email"
+                                    class="form-control"
+                                    disabled readonly value="{{ request.user.email }}" />
+                        </div>
+                    </div>
+                </main>
+                <footer>
+                    {{ csrf_input }}
+                    <button name="_profile" type="submit" class="btn btn-primary ms-auto">
+                        {{ _('Update my information') }}
+                    </button>
+                </footer>
+            </section>
+        </form>
+
+        <form method="post" class="mt-6">
+            <section class="form-section">
+                <header class="py-4 border-b border-gray-200 font-medium mb-6 text-lg">
+                    <h3>{{ _('Change password') }}</h3>
+                </header>
+                <main>
+                    <div class="grid grid-cols-1 md:grid-cols-1 gap-x-5">
+                        {{ forms.form_field(password_form.current_password) }} {{ forms.form_field(password_form.password) }} {{ forms.form_field(password_form.confirm_password) }}
+                    </div>
+                </main>
+                <footer>
+                    {{ csrf_input }}
+                    <button name="_password" type="submit" class="btn btn-primary ms-auto">
+                        {{ _('Change password') }}
+                    </button>
+                </footer>
+            </section>
+        </form>
+
+        <form method="post" action="{{ url('logout') }}" class="mt-6">
+            {{ csrf_input }}
+            <section class="form-section">
+                <header class="py-4 border-b border-gray-200 font-medium mb-6 text-lg">
+                    <h3>{{ _('Log out') }}</h3>
+                </header>
+                <main>
+                    <button type="submit" class="btn btn-warning">{{ _('Logout') }}</button>
+                </main>
+            </section>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'manage/layout.html' %}
+
+{% block page_actions %}
+    <button hx-get="{{ url('manage.teams.invite') }}"
+            hx-target="#modals"
+            class="btn btn-accent">
+        {{ tabler_icon('mail') }}
+        {{ _('Invite member') }}
+    </button>
+{% endblock %}
+
+{% block content %}
+    <div hx-target="#datatable"
+         hx-swap="outerHTML"
+    >
+        <div class="flex items-center pb-5">
+            <form>
+                <input value="{{ search_term }}"
+                       type="search"
+                       name="search"
+                       placeholder="{{ _('Type to search...') }}"
+                       hx-get="{{ request.url }}"
+                       hx-trigger="keyup delay:200ms"
+                >
+            </form>
+        </div>
+        {% include 'manage/teams/partials/teams_page.html' %}
+    </div>
+
+    <div hx-get="{{ url('manage.teams.invites') }}" hx-trigger="load"></div>
+{% endblock %}

@@ -1,0 +1,1150 @@
+# Russian translations for PROJECT.
+# Copyright (C) 2022 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2022-11-26 17:18+0300\n"
+"PO-Revision-Date: 2022-11-10 18:56+0300\n"
+"Last-Translator: Alex Oleshkevich <alex.oleshkevich@gmail.com>\n"
+"Language: ru\n"
+"Language-Team: ru <LL@li.org>\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.11.0\n"
+
+#: {{cookiecutter.project_name}}/views.py:23
+msgid "Terms and conditions"
+msgstr "Пользовательское соглашение"
+
+#: {{cookiecutter.project_name}}/views.py:31
+msgid "Privacy policy"
+msgstr "Политика конфиденциальности"
+
+#: {{cookiecutter.project_name}}/auth/commands.py:17
+#, fuzzy
+msgid "Create user"
+msgstr "Создать аккаунт"
+
+#: {{cookiecutter.project_name}}/auth/commands.py:19 {{cookiecutter.project_name}}/auth/forms.py:8
+#: {{cookiecutter.project_name}}/auth/forms.py:15 {{cookiecutter.project_name}}/registration/forms.py:10
+msgid "Email"
+msgstr ""
+
+#: {{cookiecutter.project_name}}/auth/commands.py:20 {{cookiecutter.project_name}}/auth/forms.py:9
+#: {{cookiecutter.project_name}}/auth/forms.py:23 {{cookiecutter.project_name}}/registration/forms.py:12
+msgid "Password"
+msgstr "Пароль"
+
+#: {{cookiecutter.project_name}}/auth/commands.py:26
+msgid "User created. ID = {user_id}."
+msgstr ""
+
+#: {{cookiecutter.project_name}}/auth/commands.py:33
+#, fuzzy
+msgid "Change password of {email}."
+msgstr "Изменить пароль"
+
+#: {{cookiecutter.project_name}}/auth/commands.py:37 {{cookiecutter.project_name}}/auth/commands.py:53
+msgid "User does not exists."
+msgstr ""
+
+#: {{cookiecutter.project_name}}/auth/commands.py:39
+#, fuzzy
+msgid "Set new password for {user}"
+msgstr "Задать новый пароль"
+
+#: {{cookiecutter.project_name}}/auth/commands.py:40
+#, fuzzy
+msgid "Enter new password"
+msgstr "Задать новый пароль"
+
+#: {{cookiecutter.project_name}}/auth/commands.py:43
+#, fuzzy
+msgid "Password has been changed."
+msgstr "Ваш пароль был изменен."
+
+#: {{cookiecutter.project_name}}/auth/commands.py:55
+#, fuzzy
+msgid "Test password of {user}"
+msgstr "Сменить пароль"
+
+#: {{cookiecutter.project_name}}/auth/commands.py:56
+#, fuzzy
+msgid "Enter password"
+msgstr "Задать новый пароль"
+
+#: {{cookiecutter.project_name}}/auth/commands.py:58
+#, fuzzy
+msgid "Passwords did match."
+msgstr "Пароли не совпали."
+
+#: {{cookiecutter.project_name}}/auth/commands.py:60 {{cookiecutter.project_name}}/auth/forms.py:35
+msgid "Passwords did not match."
+msgstr "Пароли не совпали."
+
+#: {{cookiecutter.project_name}}/auth/commands.py:71
+#, fuzzy
+msgid "Enter plain password"
+msgstr "Задать новый пароль"
+
+#: {{cookiecutter.project_name}}/auth/forms.py:10
+msgid "Remember me"
+msgstr ""
+
+#: {{cookiecutter.project_name}}/auth/forms.py:31
+msgid "Confirm Password"
+msgstr "Подтвердите пароль"
+
+#: {{cookiecutter.project_name}}/auth/mails.py:11
+#, fuzzy
+msgid "Your password reset link."
+msgstr "Смена пароля"
+
+#: {{cookiecutter.project_name}}/auth/mails.py:21
+#: {{cookiecutter.project_name}}/auth/templates/auth/mail_password_changed.html:2
+#: {{cookiecutter.project_name}}/auth/views.py:124
+msgid "Your password has been changed."
+msgstr "Ваш пароль был изменен."
+
+#: {{cookiecutter.project_name}}/auth/validators.py:7
+msgid "Password must not be the same as email."
+msgstr ""
+
+#: {{cookiecutter.project_name}}/auth/views.py:43
+msgid "Too many failed login attempts."
+msgstr ""
+
+#: {{cookiecutter.project_name}}/auth/views.py:48
+#, fuzzy
+msgid "Invalid email or password"
+msgstr "Неверный адрес или пароль."
+
+#: {{cookiecutter.project_name}}/auth/views.py:52
+#, fuzzy
+msgid "Invalid email or password."
+msgstr "Неверный адрес или пароль."
+
+#: {{cookiecutter.project_name}}/auth/views.py:66
+msgid "Authenticated successfully."
+msgstr ""
+
+#: {{cookiecutter.project_name}}/auth/views.py:77 {{cookiecutter.project_name}}/templates/app.html:90
+msgid "Login"
+msgstr "Вход"
+
+#: {{cookiecutter.project_name}}/auth/views.py:87
+msgid "You have been signed out."
+msgstr "Вы вылогинились из вашего аккаунта."
+
+#: {{cookiecutter.project_name}}/auth/views.py:102
+msgid "Link is sent to your email."
+msgstr ""
+
+#: {{cookiecutter.project_name}}/auth/templates/auth/change_password.html:1
+#: {{cookiecutter.project_name}}/auth/templates/auth/change_password.html:2
+msgid "Set new password"
+msgstr "Задать новый пароль"
+
+#: {{cookiecutter.project_name}}/auth/templates/auth/change_password.html:5
+#: {{cookiecutter.project_name}}/users/templates/profile/index.html:28
+#: {{cookiecutter.project_name}}/users/templates/profile/index.html:39
+msgid "Change password"
+msgstr "Изменить пароль"
+
+#: {{cookiecutter.project_name}}/auth/templates/auth/change_password.html:7
+#: {{cookiecutter.project_name}}/auth/templates/auth/forgot_password.html:8
+msgid "Remembered your password?"
+msgstr "Забыли пароль?"
+
+#: {{cookiecutter.project_name}}/auth/templates/auth/change_password.html:8
+#: {{cookiecutter.project_name}}/auth/templates/auth/forgot_password.html:9
+msgid "Sign in instead"
+msgstr "Залогиньтесь"
+
+#: {{cookiecutter.project_name}}/auth/templates/auth/forgot_password.html:1
+#: {{cookiecutter.project_name}}/auth/templates/auth/forgot_password.html:6
+msgid "Reset password"
+msgstr "Сменить пароль"
+
+#: {{cookiecutter.project_name}}/auth/templates/auth/forgot_password.html:2
+msgid "Enter your email address and we will sent you password reset link."
+msgstr "Введите адрес вашей почты и мы пришлем ссылку для смены пароля."
+
+#: {{cookiecutter.project_name}}/auth/templates/auth/invalid_token.html:1
+msgid "This link is no longer valid."
+msgstr ""
+
+#: {{cookiecutter.project_name}}/auth/templates/auth/invalid_token.html:3
+#, python-format
+msgid "The link is active only for %(max_age_minutes)s minutes. "
+msgstr ""
+
+#: {{cookiecutter.project_name}}/auth/templates/auth/login.html:1
+#: {{cookiecutter.project_name}}/auth/templates/auth/login.html:13
+msgid "Sign in"
+msgstr "Вход"
+
+#: {{cookiecutter.project_name}}/auth/templates/auth/login.html:5
+msgid "Forgot password?"
+msgstr "Забыли пароль?"
+
+#: {{cookiecutter.project_name}}/auth/templates/auth/login.html:15
+#, fuzzy
+msgid "Don't have an account?"
+msgstr "Нет аккаунта?"
+
+#: {{cookiecutter.project_name}}/auth/templates/auth/login.html:16
+msgid "Sign up!"
+msgstr "Зарегистрируйтесь!"
+
+#: {{cookiecutter.project_name}}/auth/templates/auth/mail_password_changed.html:4
+#, fuzzy, python-format
+msgid ""
+" Hi, %(user)s!<br />\n"
+"    We want to inform you that your password has been changed. "
+msgstr ""
+"\n"
+"            Здравствуйте, %(user)s!<br />\n"
+"            Сообщаем вам, что ваш пароль был успешно изменен.\n"
+"        "
+
+#: {{cookiecutter.project_name}}/auth/templates/auth/mail_reset_password.html:2
+msgid "Password reset"
+msgstr "Смена пароля"
+
+#: {{cookiecutter.project_name}}/auth/templates/auth/mail_reset_password.html:4
+#, fuzzy, python-format
+msgid ""
+" Hi %(user)s! <br />\n"
+"    A request has been received to change the password for your account. "
+msgstr ""
+"\n"
+"            Здраствуйте, %(user)s! <br />\n"
+"            Мы получили запрос на смену вашего пароля.\n"
+"        "
+
+#: {{cookiecutter.project_name}}/auth/templates/auth/mail_reset_password.html:7
+msgid "Click here to reset your password"
+msgstr "Нажмите сюда для смены пароля"
+
+#: {{cookiecutter.project_name}}/auth/templates/auth/mail_reset_password.html:9
+msgid ""
+"If you didn't request to reset your password, there's nothing to worry "
+"about - simply ignore this email."
+msgstr ""
+"Если вы не хотите сменить ваш пароль, то просто проигнорируйте это "
+"сообщение."
+
+#: {{cookiecutter.project_name}}/config/mail/commands.py:14
+msgid "This is test email"
+msgstr ""
+
+#: {{cookiecutter.project_name}}/config/mail/commands.py:15
+msgid "If you see this then it works. Sent at {time}."
+msgstr ""
+
+#: {{cookiecutter.project_name}}/registration/forms.py:19
+msgid "Accept usage terms and privacy policy"
+msgstr "Я принимаю правила пользования и политику конфиденциальности"
+
+#: {{cookiecutter.project_name}}/registration/forms.py:29
+msgid "This address is not available."
+msgstr "Этот адрес недоступен."
+
+#: {{cookiecutter.project_name}}/registration/templates/registration/mail_confirm_email.html:2
+msgid "Confirm your email address"
+msgstr "Подтвердите вашу почту"
+
+#: {{cookiecutter.project_name}}/registration/templates/registration/mail_confirm_email.html:4
+#, fuzzy, python-format
+msgid ""
+" Hi %(name)s! <br />\n"
+"    to confirm your email address just click the button below and you are"
+" good to go! "
+msgstr ""
+"\n"
+"            Здравствуйте, %(name)s! <br />\n"
+"            нажмита на кнопку для подтверждения этого электронного ящика."
+"\n"
+"        "
+
+#: {{cookiecutter.project_name}}/registration/templates/registration/mail_confirm_email.html:7
+msgid "Confirm email"
+msgstr "Подтвердить"
+
+#: {{cookiecutter.project_name}}/registration/templates/registration/register.html:1
+msgid "Sign up"
+msgstr "Регистрация"
+
+#: {{cookiecutter.project_name}}/registration/templates/registration/register.html:4
+#, fuzzy, python-format
+msgid ""
+" Agree the\n"
+"    <a href=\"%(terms_url)s\" tabindex=\"-1\">terms</a> and <a "
+"href=\"%(policy_url)s\">policy</a>. "
+msgstr ""
+"\n"
+"        Я ознакомлен с <a href=\"%(terms_url)s\" "
+"tabindex=\"-1\">пользовательским соглашением</a> и <a "
+"href=\"%(policy_url)s\">политикой конфиденциальности</a>. Даю согласие на"
+" обработку своих персональных данных.\n"
+"    "
+
+#: {{cookiecutter.project_name}}/registration/templates/registration/register.html:11
+#, fuzzy
+msgid "Create account"
+msgstr "Создать аккаунт"
+
+#: {{cookiecutter.project_name}}/registration/templates/registration/register.html:13
+#, fuzzy
+msgid "Already have an account?"
+msgstr "Уже зарегистрированы?"
+
+#: {{cookiecutter.project_name}}/registration/templates/registration/register.html:14
+msgid "Sign in!"
+msgstr "Войти!"
+
+#: {{cookiecutter.project_name}}/templates/app.html:9 {{cookiecutter.project_name}}/templates/app.html:69
+msgid "Search"
+msgstr "Поиск"
+
+#: {{cookiecutter.project_name}}/templates/app.html:16
+msgid "For Business"
+msgstr "Для бизнеса"
+
+#: {{cookiecutter.project_name}}/templates/app.html:39 {{cookiecutter.project_name}}/templates/app.html:84
+msgid "Your profile"
+msgstr "Ваш профиль"
+
+#: {{cookiecutter.project_name}}/templates/app.html:40 {{cookiecutter.project_name}}/templates/app.html:85
+msgid "Sign out"
+msgstr "Выход"
+
+#: {{cookiecutter.project_name}}/templates/app.html:45 {{cookiecutter.project_name}}/templates/app.html:89
+msgid "Register"
+msgstr "Регистрация"
+
+#: {{cookiecutter.project_name}}/templates/app.html:46
+msgid "Log in"
+msgstr "Вход"
+
+#: {{cookiecutter.project_name}}/templates/lib/empty_state.html:1
+msgid "This page has no content."
+msgstr "Эта страница пуста."
+
+#: {{cookiecutter.project_name}}/templates/lib/forms.html:111
+msgid "Add a new item"
+msgstr "Добавить еще"
+
+#: {{cookiecutter.project_name}}/templates/lib/forms.html:133
+msgid "Drop or select files"
+msgstr "Перетащите или выберите файлы"
+
+#: {{cookiecutter.project_name}}/templates/lib/forms.html:136
+msgid "You can select up to 5 files each 5mb max."
+msgstr "Вы можете выбрать до 5 файлов размером не более 5мб каждый."
+
+#: {{cookiecutter.project_name}}/templates/lib/forms.html:192
+msgid "Select"
+msgstr "Выбрать"
+
+#: {{cookiecutter.project_name}}/templates/lib/forms.html:200
+msgid "Delete"
+msgstr "Удалить"
+
+#: {{cookiecutter.project_name}}/templates/lib/pagination.html:5
+#, python-format
+msgid "Showing %(start_index)s - %(end_index)s of %(total_rows)s results."
+msgstr "Показано %(start_index)s - %(end_index)s из %(total_rows)s результатов."
+
+#: {{cookiecutter.project_name}}/templates/lib/pagination.html:12
+msgid "Previous"
+msgstr "Назад"
+
+#: {{cookiecutter.project_name}}/templates/lib/pagination.html:25
+msgid "Next"
+msgstr "Вперед"
+
+#: {{cookiecutter.project_name}}/templates/mail/base_mail.html:24
+#, fuzzy
+msgid ""
+"If the button doesn't work copy and paste this link into the\n"
+"                                                address bar:"
+msgstr ""
+"Если кнопка не работает, то скопируйте и вставьте эту ссылку в адресную "
+"строку вашего браузера:"
+
+#: {{cookiecutter.project_name}}/users/forms.py:6
+msgid "First name"
+msgstr "Имя"
+
+#: {{cookiecutter.project_name}}/users/forms.py:7
+msgid "Last name"
+msgstr "Фамилия"
+
+#: {{cookiecutter.project_name}}/users/views.py:31
+msgid "Profile has been updated."
+msgstr "Ваш профиль был обновлен."
+
+#: {{cookiecutter.project_name}}/users/views.py:40
+msgid "Password has been updated."
+msgstr "Пароль был обновлен."
+
+#: {{cookiecutter.project_name}}/users/views.py:43
+msgid "Invalid current password."
+msgstr "Вы вверли неправльный текущий пароль."
+
+#: {{cookiecutter.project_name}}/users/templates/profile/index.html:1
+msgid "Your Profile"
+msgstr "Ваш профиль"
+
+#: {{cookiecutter.project_name}}/users/templates/profile/index.html:6
+msgid "Your information"
+msgstr "Ваша информация"
+
+#: {{cookiecutter.project_name}}/users/templates/profile/index.html:19
+msgid "Update my information"
+msgstr "Обновить профиль"
+
+#: {{cookiecutter.project_name}}/users/templates/profile/index.html:48
+#: {{cookiecutter.project_name}}/users/templates/profile/index.html:50
+msgid "Logout"
+msgstr "Выход"
+
+#~ msgid "Import options"
+#~ msgstr "Опции"
+
+#~ msgid "Call"
+#~ msgstr "Позвонить"
+
+#~ msgid "Card"
+#~ msgstr "Банковская карта"
+
+#~ msgid "Cash"
+#~ msgstr "Наличные"
+
+#~ msgid "Bank transfer"
+#~ msgstr "Банковский перевод"
+
+#~ msgid "ERIP"
+#~ msgstr "ЕРИП"
+
+#~ msgid "Telegram"
+#~ msgstr "Telegram"
+
+#~ msgid "Viber"
+#~ msgstr "Viber"
+
+#~ msgid "Whatsapp"
+#~ msgstr "Whatsapp"
+
+#~ msgid "BYN"
+#~ msgstr "BYN"
+
+#~ msgid "USD"
+#~ msgstr "USD"
+
+#~ msgid "EUR"
+#~ msgstr "евро"
+
+#~ msgid "RUB"
+#~ msgstr "RUB"
+
+#~ msgid "Gasoline"
+#~ msgstr "Бензин"
+
+#~ msgid "Diesel"
+#~ msgstr "Дизель"
+
+#~ msgid "Hybrid"
+#~ msgstr "Гибрид"
+
+#~ msgid "Electric"
+#~ msgstr "Электро"
+
+#~ msgid "Mechanic"
+#~ msgstr "Механика"
+
+#~ msgid "Automatic"
+#~ msgstr "Автомат"
+
+#~ msgid "Robot"
+#~ msgstr "Робот"
+
+#~ msgid "Variator"
+#~ msgstr "Вариатор"
+
+#~ msgid "All Road"
+#~ msgstr "Внедорожник"
+
+#~ msgid "Cabriolet"
+#~ msgstr "Кабриолет"
+
+#~ msgid "Coupe"
+#~ msgstr "Купе"
+
+#~ msgid "Fastback"
+#~ msgstr "Фастбек"
+
+#~ msgid "Hatchback"
+#~ msgstr "Хэтчбэк"
+
+#~ msgid "Hardtop"
+#~ msgstr "Хардтоп"
+
+#~ msgid "Liftback"
+#~ msgstr "Лифтбек"
+
+#~ msgid "Limousine"
+#~ msgstr "Лимузин"
+
+#~ msgid "Minibus"
+#~ msgstr "Микроавтобус"
+
+#~ msgid "Minivan"
+#~ msgstr "Минивен"
+
+#~ msgid "Pickup"
+#~ msgstr "Пикап"
+
+#~ msgid "Roadster"
+#~ msgstr "Родстер"
+
+#~ msgid "Sedan"
+#~ msgstr "Седан"
+
+#~ msgid "Targa"
+#~ msgstr "Тарга"
+
+#~ msgid "Truck"
+#~ msgstr "Грузовик"
+
+#~ msgid "Universal"
+#~ msgstr "Универсал"
+
+#~ msgid "Van"
+#~ msgstr "Фургон"
+
+#~ msgid "One week"
+#~ msgstr "Неделя"
+
+#~ msgid "Two weeks"
+#~ msgstr "Две недели"
+
+#~ msgid "Month"
+#~ msgstr "Месяц"
+
+#~ msgid "Two months"
+#~ msgstr "Два месяца"
+
+#~ msgid "Three months"
+#~ msgstr "Три месяца"
+
+#~ msgid "Six months"
+#~ msgstr "Полгода"
+
+#~ msgid "Add new and update existing"
+#~ msgstr "Добавить новые и обновить существующие"
+
+#~ msgid "Add, update, and delete missing"
+#~ msgstr "Добавить, обновить и удалить старые"
+
+#~ msgid "Active"
+#~ msgstr "Активен"
+
+#~ msgid "Cancelled"
+#~ msgstr "Отменено"
+
+#~ msgid "The operation cannot be completed."
+#~ msgstr "Операция не может быть завершена."
+
+#~ msgid "Further instructions has been sent to your inbox."
+#~ msgstr "Мы отправили на вашу почту дальнейшие инструкции."
+
+#~ msgid "Name"
+#~ msgstr "Имя"
+
+#~ msgid "Legal name"
+#~ msgstr "Юридическое лицо"
+
+#~ msgid "UNP"
+#~ msgstr "УНП"
+
+#~ msgid "Legal address"
+#~ msgstr "Юридический адрес"
+
+#~ msgid "Logo"
+#~ msgstr "Логотип"
+
+#~ msgid "Country"
+#~ msgstr "Страна"
+
+#~ msgid "City"
+#~ msgstr "Город"
+
+#~ msgid "Emails"
+#~ msgstr "Почта"
+
+#~ msgid "Phones"
+#~ msgstr "Телефоны"
+
+#~ msgid "Article"
+#~ msgstr "Артикул"
+
+#~ msgid "Your internal ID"
+#~ msgstr "ID детали в вашей внутренней системе"
+
+#~ msgid "Part number"
+#~ msgstr "Номер запчасти"
+
+#~ msgid "Category"
+#~ msgstr "Запчасть"
+
+#~ msgid "New"
+#~ msgstr "Новая"
+
+#~ msgid "On order"
+#~ msgstr "Под заказ"
+
+#~ msgid "Price"
+#~ msgstr "Цена"
+
+#~ msgid "Discount"
+#~ msgstr "Скидка"
+
+#~ msgid "Currency"
+#~ msgstr "Валюта"
+
+#~ msgid "Make"
+#~ msgstr "Марка"
+
+#~ msgid "Model"
+#~ msgstr "Модель"
+
+#~ msgid "Generation"
+#~ msgstr "Поколение"
+
+#~ msgid "Year"
+#~ msgstr "Год"
+
+#~ msgid "Engine"
+#~ msgstr "Двигатель"
+
+#~ msgid "Transmission"
+#~ msgstr "КПП"
+
+#~ msgid "Body"
+#~ msgstr "Кузов"
+
+#~ msgid "Volume"
+#~ msgstr "Объем"
+
+#~ msgid "Warranty"
+#~ msgstr "Гарантия"
+
+#~ msgid "Delivery"
+#~ msgstr "Условия доставки"
+
+#~ msgid "Description"
+#~ msgstr "Примечание"
+
+#~ msgid "Video"
+#~ msgstr "Видео"
+
+#~ msgid "Warehouse address"
+#~ msgstr "Адрес склада"
+
+#~ msgid "Seller"
+#~ msgstr "Продавец"
+
+#~ msgid "Photos"
+#~ msgstr "Фотографии"
+
+#~ msgid "My publications"
+#~ msgstr "Мои объявления"
+
+#~ msgid "Listing has been updated."
+#~ msgstr "Объявление было добавлено."
+
+#~ msgid "Listing has been created."
+#~ msgstr "Объявление было создано."
+
+#~ msgid "Edit publication"
+#~ msgstr "Правка объявления"
+
+#~ msgid "Create publication"
+#~ msgstr "Новое объявление"
+
+#~ msgid "This UNP is already taken."
+#~ msgstr "Организация с этим УНП уже зарегистрирована."
+
+#~ msgid "You have been logged in into {organization}."
+#~ msgstr "Вы сменили текущую организацию на {organization}."
+
+#~ msgid "Cannot login into selected organization."
+#~ msgstr "Невозможно переключиться на выбранную организацию."
+
+#~ msgid "Select organization"
+#~ msgstr "Выберите организацию"
+
+#~ msgid "Organization has been created."
+#~ msgstr "Организация была создана."
+
+#~ msgid "Register organization"
+#~ msgstr "Создать организацию"
+
+#~ msgid "Parts"
+#~ msgstr "Запчасти"
+
+#~ msgid "Part"
+#~ msgstr "Запчасть"
+
+#~ msgid "Price, BYN"
+#~ msgstr "Цена, BYN"
+
+#~ msgid "Engine code"
+#~ msgstr "Код двигателя"
+
+#~ msgid "URL"
+#~ msgstr "Ссылка"
+
+#~ msgid ""
+#~ "We will download and import a file"
+#~ " located at this URL. Only CSV "
+#~ "files supported."
+#~ msgstr ""
+#~ "Мы скачаем и импортируем этот файл "
+#~ "в нашу базу. Мы работаем только с"
+#~ " файлами типа CSV."
+
+#~ msgid "Mode"
+#~ msgstr "Режим"
+
+#~ msgid "Define what to do with imported rows."
+#~ msgstr "Выберите дальнейшие действия с загруженными деталями."
+
+#~ msgid "Delete in"
+#~ msgstr "Удалить через"
+
+#~ msgid "The listing will be deleted automatically after this period."
+#~ msgstr "Мы автоматически удалим эти объявления через этот период времени."
+
+#~ msgid "Select CSV file"
+#~ msgstr "Выберите CSV файл"
+
+#~ msgid "Body type"
+#~ msgstr "Кузов"
+
+#~ msgid "Part name"
+#~ msgstr "Запчасть"
+
+#~ msgid "Type \"{value}\" does not exists in our database."
+#~ msgstr "Тип \"{value}\" не существует в нашей базе данных."
+
+#~ msgid "Type \"{name}\" does not exist in our database."
+#~ msgstr "Тип \"{name}\" не существует в нашей базе данных."
+
+#~ msgid "\"{value}\" is not a valid integer."
+#~ msgstr "\"{value}\" содержит неверное числовое значение."
+
+#~ msgid "Discount cannot be less than 0. Given {value}."
+#~ msgstr "Скидка не может быть меньше нуля. Дано {value}."
+
+#~ msgid "Discount cannot be greater than 100. Given {value}."
+#~ msgstr "Скидка не может быть больше 100. Дано {value}."
+
+#~ msgid "Field \"{name}\" contains invalid value: {value}."
+#~ msgstr "Поле \"{name}\" содержит неверное значение: {value}."
+
+#~ msgid "Failed to fetch document in {seconds} seconds."
+#~ msgstr "Не удалось скачать документ за {seconds} секунд."
+
+#~ msgid "Unsupported file type: {url}"
+#~ msgstr "Файл не поддерживается: {url}"
+
+#~ msgid "Invalid file submitted."
+#~ msgstr "Файл не поддерживается."
+
+#~ msgid "You file has been queued for import."
+#~ msgstr "Мы поставили ваш файл в очередь на импорт."
+
+#~ msgid "Import CSV file"
+#~ msgstr "Импортировать из CSV"
+
+#~ msgid "Autoimport configuration has been updated."
+#~ msgstr "Настройки автоматического импорта обновлены."
+
+#~ msgid "Automatic import"
+#~ msgstr "Автоимпорт"
+
+#~ msgid "Import report"
+#~ msgstr "Отчет о импорте"
+
+#~ msgid "{{cookiecutter.project_name}}.by - Template.csv"
+#~ msgstr "{{cookiecutter.project_name}}.by - Shablon dla importa.csv"
+
+#~ msgid "{{cookiecutter.project_name}}.by - Makes and models.csv"
+#~ msgstr "{{cookiecutter.project_name}}.by - Marki i modeli.csv"
+
+#~ msgid "{{cookiecutter.project_name}}.by - Part categories.csv"
+#~ msgstr "{{cookiecutter.project_name}}.by - Zapchasti.csv"
+
+#~ msgid "There is another part with this article."
+#~ msgstr "Запчасть с таким артикулом уже существует."
+
+#~ msgid "Phone"
+#~ msgstr "Телефон"
+
+#~ msgid "Messengers"
+#~ msgstr "Чаты"
+
+#~ msgid "Close in"
+#~ msgstr "Удалить через"
+
+#~ msgid "The listing will be closed automatically after this period."
+#~ msgstr "Мы удалим объявления через этот период времени."
+
+#~ msgid "Published?"
+#~ msgstr "Опубликовано?"
+
+#~ msgid "Unpublished listings will not be visible to customers."
+#~ msgstr "Неопубликованные объявления не видны клиентам."
+
+#~ msgid "In cubic centimeters, cm<sup>3</sup>"
+#~ msgstr "В куб. см, см<sup>3</sup>"
+
+#~ msgid "Part has been added."
+#~ msgstr "Запчасть добавлена."
+
+#~ msgid "Add part"
+#~ msgstr "Добавить"
+
+#~ msgid "Object has been deleted."
+#~ msgstr "Объект был удален."
+
+#~ msgid "Payment types"
+#~ msgstr "Способы оплаты"
+
+#~ msgid "Organization has been updated."
+#~ msgstr "Организация обновлена."
+
+#~ msgid "Year from"
+#~ msgstr "Год, с"
+
+#~ msgid "Year to"
+#~ msgstr "Год, по"
+
+#~ msgid "in cubic centimeters"
+#~ msgstr "в куб. см"
+
+#~ msgid "Price from"
+#~ msgstr "Цена от"
+
+#~ msgid "Price to"
+#~ msgstr "Цена до"
+
+#~ msgid "All parts"
+#~ msgstr "Все запчасти"
+
+#~ msgid "{category} for {make} {model}, {year}{part_number}"
+#~ msgstr "{category} для {make} {model}, {year}{part_number}"
+
+#~ msgid "Vehicle"
+#~ msgstr "Авто"
+
+#~ msgid "Status"
+#~ msgstr "Статус"
+
+#~ msgid "Date"
+#~ msgstr "Дата"
+
+#~ msgid "Edit"
+#~ msgstr "Правка"
+
+#~ msgid "Delete this publication?"
+#~ msgstr "Удалить это объявление?"
+
+#~ msgid "You haven't published any posts."
+#~ msgstr "Вы еще не разместили объявлений."
+
+#~ msgid "More options"
+#~ msgstr "Дополнительно"
+
+#~ msgid "Spare part"
+#~ msgstr "Запчасть"
+
+#~ msgid "Pricing"
+#~ msgstr "Цены"
+
+#~ msgid "Location"
+#~ msgstr "Место"
+
+#~ msgid "Submit"
+#~ msgstr "Отправить"
+
+#~ msgid ""
+#~ "\n"
+#~ "                            <b>%(category)s</b> for "
+#~ "%(make)s %(model)s, %(year)s\n"
+#~ "                        "
+#~ msgstr ""
+#~ "\n"
+#~ "                            <b>%(category)s</b> для "
+#~ "%(make)s %(model)s, %(year)s\n"
+#~ "                        "
+
+#~ msgid "No price"
+#~ msgstr "Нет цены"
+
+#~ msgid "Contact seller"
+#~ msgstr "Связаться с продавцом"
+
+#~ msgid "No photos uploaded."
+#~ msgstr "Нет фото."
+
+#~ msgid "In stock"
+#~ msgstr "На складе"
+
+#~ msgid "{volume:.1f}l"
+#~ msgstr "{volume:.1f}л"
+
+#~ msgid "Settings"
+#~ msgstr "Настройки"
+
+#~ msgid "Back to site"
+#~ msgstr "Вернуться на сайт"
+
+#~ msgid "Switch organization"
+#~ msgstr "Сменить организацию"
+
+#~ msgid "Select your organization"
+#~ msgstr "Выберите организацию"
+
+#~ msgid "Get started by selecting an organization or create a new one."
+#~ msgstr "Начните с выбора организации или создайте новую."
+
+#~ msgid "Or start with new organization"
+#~ msgstr "Продолжите с создания новой организации"
+
+#~ msgid "No organizations"
+#~ msgstr "Нет организаций"
+
+#~ msgid "Get started by creating a new organization."
+#~ msgstr "Начните работу с создания новой организации."
+
+#~ msgid "New Organization"
+#~ msgstr "Новая организация"
+
+#~ msgid "Cancel"
+#~ msgstr "Отмена"
+
+#~ msgid "Save as?"
+#~ msgstr "Сохранить как"
+
+#~ msgid "Column configuration"
+#~ msgstr "Настройка колонок"
+
+#~ msgid ""
+#~ "\n"
+#~ "            You can import a file that you use on other platforms.\n"
+#~ "            To do this, tell us how to connect CSV columns to values.\n"
+#~ "        "
+#~ msgstr ""
+#~ "\n"
+#~ "            Вы можете использовать файл, "
+#~ "который вы уже используете для загрузки"
+#~ " на другие площадки. \n"
+#~ "            Для этого вам нужно "
+#~ "сопоставить колонки из CSV файла с "
+#~ "намиши параметрами.\n"
+#~ "        "
+
+#~ msgid "Show configuration form"
+#~ msgstr "Показать форму настроек"
+
+#~ msgid "Select from preset"
+#~ msgstr "Выберите пресет"
+
+#~ msgid "Reset"
+#~ msgstr "Сброс"
+
+#~ msgid "Save as preset"
+#~ msgstr "Сохранить пресет"
+
+#~ msgid "File requirements"
+#~ msgstr "Требования к файлу"
+
+#~ msgid "The file must be in CSV format."
+#~ msgstr "Файл должен быть в формате CSV."
+
+#~ msgid ""
+#~ "The first row contains must column titles and is ignored by\n"
+#~ "            us."
+#~ msgstr "Первая строка должна содержать названия колонок."
+
+#~ msgid "Columns \"Make\", \"Model\", \"Article\", \"Category\" are required."
+#~ msgstr ""
+#~ "Колонки \"Марка\", \"Модель\", \"Артикул\" и"
+#~ " \"Запчасть\" обязательны к заполнению."
+
+#~ msgid "Make, model, category names must match our database."
+#~ msgstr "Марка, Модель и Запчасти должны соответсвовать нашей базе данных."
+
+#~ msgid "File should be UTF-8 encoded."
+#~ msgstr "Файл должен быть к кодировке UTF-8."
+
+#~ msgid "CSV rows must use comma \",\" to separate columns."
+#~ msgstr "Значения колонок должны быть разделены символом запятой \",\"."
+
+#~ msgid "CSV values must be quoted in double quotes."
+#~ msgstr ""
+#~ "Значения колонок должны быть экранированы "
+#~ "с использованием двойных кавычек."
+
+#~ msgid "\"Photos\" must be a list of links separated by comma \",\"."
+#~ msgstr ""
+#~ "Значение поля \"Фото\" - это одна "
+#~ "или несколько ссылок на изображение, "
+#~ "разделенные запятой."
+
+#~ msgid "Templates"
+#~ msgstr "Шаблоны"
+
+#~ msgid "Download template"
+#~ msgstr "Скачать шаблон"
+
+#~ msgid "Download makes and models list"
+#~ msgstr "Скачать список марок и моделей"
+
+#~ msgid "Download categories list"
+#~ msgstr "Скачать спискок запчастей"
+
+#~ msgid "Notes on invalid files"
+#~ msgstr "О \"плохих\" файлах"
+
+#~ msgid "We can disable schedule on three failed attempts in a row."
+#~ msgstr ""
+#~ "Мы можем приостановить автоматический импорт,"
+#~ " если нам не удастся импортировать "
+#~ "файл несколько раз подряд."
+
+#~ msgid "Save and return to list"
+#~ msgstr "Сохранить и вернуться"
+
+#~ msgid "History"
+#~ msgstr "История"
+
+#~ msgid "Time"
+#~ msgstr "Время"
+
+#~ msgid "Total"
+#~ msgstr "Всего"
+
+#~ msgid "Updated"
+#~ msgstr "Обновлено"
+
+#~ msgid "Deleted"
+#~ msgstr "Удалено"
+
+#~ msgid "Failed"
+#~ msgstr "Ошибок"
+
+#~ msgid "Running"
+#~ msgstr "Работает"
+
+#~ msgid "Error"
+#~ msgstr "Ошибка"
+
+#~ msgid "Success"
+#~ msgstr "Успех"
+
+#~ msgid "Errors"
+#~ msgstr "Ошибки"
+
+#~ msgid "This schedule has never been executed."
+#~ msgstr "Этот автоимпорт ни разу не выполнялся."
+
+#~ msgid "Import parts from CSV"
+#~ msgstr "Импортировать из CSV"
+
+#~ msgid "{count} rows failed to import. Here are 100 first errors."
+#~ msgstr "Не удалось импортировать {count}  строк. Показываем первые 100 ошибок."
+
+#~ msgid "Row {index}"
+#~ msgstr "Строка {index}"
+
+#~ msgid "No errors"
+#~ msgstr "Нет ошибок"
+
+#~ msgid "Part details"
+#~ msgstr "Детали"
+
+#~ msgid "Save"
+#~ msgstr "Сохранить"
+
+#~ msgid "Publication"
+#~ msgstr "Публикация"
+
+#~ msgid "Media"
+#~ msgstr "Медиа"
+
+#~ msgid "Save and add new"
+#~ msgstr "Сохранить и создать еще"
+
+#~ msgid "Import CSV"
+#~ msgstr "Импорт CSV"
+
+#~ msgid "Published"
+#~ msgstr "Опубликовано"
+
+#~ msgid "Lifetime"
+#~ msgstr "Срок жизни"
+
+#~ msgid "Updated at"
+#~ msgstr "Обновлено"
+
+#~ msgid "Used"
+#~ msgstr "б/у"
+
+#~ msgid "Yes"
+#~ msgstr "Да"
+
+#~ msgid "No"
+#~ msgstr "Нет"
+
+#~ msgid "Delete {resource}"
+#~ msgstr "Удаление {resource}"
+
+#~ msgid "Spare parts"
+#~ msgstr "Запчасти"
+
+#~ msgid "There are no items on this page."
+#~ msgstr "На этой странице нет данных."
+
+#~ msgid "General"
+#~ msgstr "Общие"
+
+#~ msgid "Contacts"
+#~ msgstr "Контакты"
+
+#~ msgid "for"
+#~ msgstr "для"
+
+#~ msgid "Clear"
+#~ msgstr "Очистить"
+
+#~ msgid "No results"
+#~ msgstr "Нет результатов"
+
+#~ msgid "Address"
+#~ msgstr "Адрес"
+
+#~ msgid "Close"
+#~ msgstr "Закрыть"

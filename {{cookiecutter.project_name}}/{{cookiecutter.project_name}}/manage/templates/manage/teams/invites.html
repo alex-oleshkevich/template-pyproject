@@ -1,0 +1,62 @@
+<div class="mt-20 overflow-x-auto"
+     hx-get="{{ url('manage.teams.invites') }}"
+     hx-target="this" id="datatable"
+     hx-swap="outerHTML"
+     hx-trigger="refresh_team_invitations from:body">
+
+    <header class="section-header">
+        <h5>{{ _('Sent invitations') }}</h5>
+    </header>
+
+    <table class="hover">
+        <thead>
+        <tr>
+            <th>{{ _('Email') }}</th>
+            <th>{{ _('Permissions') }}</th>
+            <th>{{ _('Sent at') }}</th>
+            <th class="w-1"></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for object in objects %}
+            <tr>
+                <td>
+                    {{ object.email }}
+                </td>
+                <td>
+                    {% if 'owner' in object.permissions %}
+                        <span class="badge badge-blue badge-sm">{{ _('Owner') }}</span>
+                    {% endif %}
+                    {% if 'admin' in object.permissions %}
+                        <span class="badge badge-green badge-sm">{{ _('Admin') }}</span>
+                    {% endif %}
+                </td>
+                <td>
+                    {{ object.created_at|datetime }}
+                </td>
+                <td>
+                    <button class="btn btn-icon relative"
+                            x-data="{open: false}"
+                            @click="open = !open"
+                            @click.outside="open = false">
+                        {{ tabler_icon('dots') }}
+
+                        <div class="dropdown-menu absolute left-0 top-10" x-show="open">
+                            <a hx-confirm="{{ _('Are you sure you want to delete this invitation?') }}"
+                               hx-delete="{{ url('manage.teams.delete_invitation', invitation_id=object.id) }}"
+                               class="text-red-700">
+                                {{ tabler_icon('trash') }}
+                                {{ _('Remove') }}
+                            </a>
+                        </div>
+                    </button>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td class="text-center text-muted" colspan="999">{{ _('No pending invitations') }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>

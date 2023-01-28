@@ -1,0 +1,72 @@
+{% import 'lib/pagination.html' as pagination %}
+
+<div class="overflow-x-auto"
+     hx-get="{{ url('manage.teams') }}"
+     hx-target="this" id="datatable"
+     hx-swap="outerHTML"
+     hx-trigger="refresh_datatable from:body">
+    <table class="hover">
+        <thead>
+        <tr>
+            <th>{{ _('Name') }}</th>
+            <th>{{ _('Permissions') }}</th>
+            <th>{{ _('Date joined') }}</th>
+            <th class="w-1"></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for object in objects %}
+            <tr>
+                <td>
+                    <div class="flex items-center gap-2">
+                        <div class="avatar">
+                            <img src="{{ object.avatar }}"
+                                 alt="{{ object.display_name }}"
+                                 class="h-full object-fit">
+                        </div>
+                        <div class="whitespace-nowrap">
+                            {{ object.display_name }}
+                        </div>
+                    </div>
+                </td>
+                <td class="whitespace-nowrap">
+                    {% if object.user == request.user %}
+                        <span class="badge badge-yellow">{{ _('You') }}</span>
+                    {% endif %}
+                    {% if 'owner' in object.permissions %}
+                        <span class="badge badge-blue">{{ _('Owner') }}</span>
+                    {% endif %}
+                    {% if 'admin' in object.permissions %}
+                        <span class="badge badge-green">{{ _('Admin') }}</span>
+                    {% endif %}
+                </td>
+                <td class="whitespace-nowrap">
+                    {{ object.created_at|datetime }}
+                </td>
+                <td>
+                    <button class="btn btn-icon relative"
+                            x-data="{open: false}"
+                            @click="open = !open"
+                            @click.outside="open = false">
+                        {{ tabler_icon('dots') }}
+
+                        <div class="dropdown-menu absolute right-0 top-10" x-show="open">
+                            {% if object.user != request.user and 'owner' not in object.permissions %}
+                                <a hx-confirm="{{ _('Are you sure you want to delete this team member?') }}"
+                                   hx-delete="{{ url('manage.teams.delete', member_id=object.id) }}"
+                                   class="text-red-700">
+                                    {{ tabler_icon('trash') }}
+                                    {{ _('Remove') }}
+                                </a>
+                            {% endif %}
+                        </div>
+                    </button>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="mt-5">
+        {{ pagination.pagination(request, objects) }}
+    </div>
+</div>

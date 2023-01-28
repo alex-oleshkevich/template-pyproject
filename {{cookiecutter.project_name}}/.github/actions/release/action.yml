@@ -1,0 +1,14 @@
+name: "Release application"
+inputs:
+    docker_image:
+        required: true
+runs:
+    using: "composite"
+    steps:
+          - name: Release application
+            working-directory: deploy/ansible
+            shell: bash
+            env:
+                APP_DOCKER_IMAGE: '${{ inputs.docker_image }}'
+            run: |
+              ansible-playbook deploy.yml -i hosts.ini --vault-password-file ~/vault.pass

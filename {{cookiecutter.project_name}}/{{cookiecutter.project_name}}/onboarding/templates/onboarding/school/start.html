@@ -1,0 +1,18 @@
+{% extends 'accounts/layout.html' %}
+{% import 'lib/forms.html' as forms %}
+
+{% block content %}
+    <form method="post" class="space-y-4">
+        {{ forms.form_field(form.email) }}
+        <div class="form-actions flex items-center justify-end">
+            <button class="btn btn-primary">
+                {{ _('Next') }}
+                {{ tabler_icon('arrow-right') }}
+            </button>
+        </div>
+    </form>
+{% endblock %}
+
+{% block footer %}
+    <a href="{{ url('home') }}" class="link">{{ _("Cancel") }}</a>
+{% endblock %}

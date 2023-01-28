@@ -1,0 +1,17 @@
+version: '3'
+env:
+    APP_DOCKER_IMAGE: "{{ .APP_DOCKER_IMAGE }}"
+    PROJECT_SLUG: "{{ .PROJECT }}"
+
+tasks:
+    ping:
+        desc: Test Ansible setup
+        dir: deploy/ansible
+        cmds:
+            - ansible all -i hosts.ini -m ping
+
+    deploy:
+        desc: Deploy
+        dir: deploy/ansible
+        cmds:
+            - ansible-playbook deploy.yml --ask-vault-pass -i hosts.ini {{.CLI_ARGS}}

@@ -1,0 +1,13 @@
+{% macro alert(message, category='info') %}
+    <div class="alert alert-{{ category }}">{{ message }}</div>
+{% endmacro %}
+
+{% macro flash_messages(messages) %}
+    {% if messages %}
+        <div class="space-y-3 mb-5">
+            {% for message in messages %}
+                {{ alert(message.message,message.category) }}
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endmacro %}

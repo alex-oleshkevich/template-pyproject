@@ -1,0 +1,21 @@
+{% extends 'mail/base_mail.html' %}
+{% import 'kupala_mail/components.html' as mails %}
+
+{% block content %}
+    <h1 class="text-center">{{ _('Hi') }}</h1>
+    <p>
+        {{ _("You have been invited to join {organization} school. ").format(organization=organization) }}
+        <br>
+        {{ _("Click on the big blue button below to join!") }}
+    </p>
+    {% if message %}
+        <hr>
+        <h3>{{ _('There is a message for you:') }}</h3>
+        <p>{{ message }}</p>
+        <hr>
+    {% endif %}
+    {{ mails.button(_('Join'), link) }}
+    <p class="text-small text-muted">
+        {{ _("We may ask you to sign up if you have no account yet.") }}
+    </p>
+{% endblock %}

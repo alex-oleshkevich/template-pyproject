@@ -11,10 +11,10 @@ from kupala.config import Secrets
 from starlette.config import Config
 
 package_name = __name__.split(".")[0]
-package_root = Path(str(importlib.import_module(package_name).__file__)).parent
-project_root = package_root.parent
+package_dir = Path(str(importlib.import_module(package_name).__file__)).parent
+project_dir = package_dir.parent
 
-env_file = project_root / ".env"
+env_file = project_dir / ".env"
 if env_file.exists():
     load_dotenv(env_file)
 
@@ -30,11 +30,11 @@ class AppSettings:
     debug: bool = False
     environment: str = ENV
     base_url: str = "http://localhost:8000"
-    app_name: str = "{{cookiecutter.project_name}}"
-    project_root: Path = project_root
-    package_dir: Path = package_root
+    app_name: str = "myproj"
+    project_dir: Path = project_dir
+    package_dir: Path = package_dir
     package_name: str = package_name
-    upload_dir: str | os.PathLike = project_root / "uploads"
+    upload_dir: str | os.PathLike = project_dir / "uploads"
 
 
 @dataclasses.dataclass(frozen=True)
@@ -54,7 +54,7 @@ class RedisSettings:
 
 @dataclasses.dataclass(frozen=True)
 class DatabaseSettings:
-    database_url: str = secret("database_url.secret", "postgresql+asyncpg://postgres:postgres@localhost/{{cookiecutter.project_name}}")
+    database_url: str = secret("database_url.secret", "postgresql+asyncpg://postgres:postgres@localhost/myproj")
     echo: bool = False
     pool_size: int = 5
     pool_max_overflow: int = 10
@@ -98,7 +98,7 @@ class SentrySettings:
 
 @dataclasses.dataclass(frozen=True)
 class LocalStorageSettings:
-    directory: str | pathlib.Path = project_root / "uploads"
+    directory: str | pathlib.Path = project_dir / "uploads"
     base_url: str = ""
 
 
@@ -117,7 +117,7 @@ class StorageSettings:
     default: typing.Literal["local", "s3"] = "local"
     local: LocalizationSettings = LocalStorageSettings()
     s3: S3StorageSettings = S3StorageSettings(
-        bucket_name="uploads.{{cookiecutter.project_name}}.io",
+        bucket_name="uploads.myproj.io",
         region_name="eu-central-1",
         signed_link_ttl=300,
         aws_access_key_id=os.environ.get("APP_STORAGE_UPLOADS_AWS_ACCESS_KEY", ""),
@@ -153,7 +153,7 @@ def new_settings(**overrides: typing.Any) -> Settings:
 
 
 def new_settings_for_test() -> Settings:
-    test_database_url = "postgresql+asyncpg://postgres:postgres@localhost/{{cookiecutter.project_name}}_test"
+    test_database_url = "postgresql+asyncpg://postgres:postgres@localhost/myproj_test"
     return new_settings(
         debug=True,
         environment="test",

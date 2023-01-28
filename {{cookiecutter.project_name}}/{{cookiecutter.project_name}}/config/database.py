@@ -21,7 +21,6 @@ metadata = db.metadata
 
 UserFk = typing.Annotated[int, mapped_column(sa.ForeignKey("users.id"), nullable=False)]
 OrganizationFk = typing.Annotated[int, mapped_column(sa.ForeignKey("organizations.id"), nullable=False)]
-get_async_session = async_session
 
 
 class Base(DeclarativeBase):

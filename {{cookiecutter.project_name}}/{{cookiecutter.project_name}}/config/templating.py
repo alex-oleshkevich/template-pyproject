@@ -1,9 +1,13 @@
+import typing
+
 import tabler_icons
 from kupala.templating import Jinja2Templates, app_processor, url_processors
+from starlette.requests import Request
 from starlette_babel.contrib.jinja import configure_jinja_env
 from starlette_flash.flash import flash_processor
 
-from {{cookiecutter.project_name}}.config.settings import settings
+from myproj.config.settings import settings
+from myproj.organizations.service import get_current_organization
 
 context_processors = [
     app_processor,
@@ -26,3 +30,10 @@ templates = Jinja2Templates(
     globals=jinja_globals,
     plugins=[configure_jinja_env],
 )
+
+
+@templates.context_processor
+def organization_processors(request: Request) -> dict[str, typing.Any]:
+    return {
+        "organization": get_current_organization(request),
+    }

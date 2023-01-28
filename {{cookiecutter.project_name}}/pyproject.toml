@@ -13,7 +13,6 @@ WTForms = "^3.0"
 uvicorn = { extras = ["standard"], version = "^0.20" }
 passlib = "^1.7"
 Babel = "^2.9"
-pydantic = "^1.9"
 tabler-icons = '*'
 sentry-sdk = "^1.12"
 sqlalchemy = { version = "^2.0", extras = ["asyncio"] }
@@ -101,7 +100,7 @@ pretty = true
 show_error_context = true
 show_column_numbers = true
 show_error_codes = true
-plugins = ["pydantic.mypy"]
+
 
 [tool.isort]
 multi_line_output = 3

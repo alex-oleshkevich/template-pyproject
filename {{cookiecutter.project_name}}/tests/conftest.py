@@ -4,7 +4,8 @@ from asyncio import get_event_loop
 
 import pytest
 import sqlalchemy as sa
-from mailers import InMemoryTransport, Mailbox, Mailer
+from mailers import InMemoryTransport, Mailer
+from mailers.pytest_plugin import Mailbox
 from sqlalchemy import Engine, create_engine
 from sqlalchemy.ext.asyncio import AsyncEngine, AsyncSession, async_sessionmaker, create_async_engine
 from starlette.applications import Starlette

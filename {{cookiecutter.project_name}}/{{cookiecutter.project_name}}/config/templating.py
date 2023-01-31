@@ -6,8 +6,8 @@ from starlette.requests import Request
 from starlette_babel.contrib.jinja import configure_jinja_env
 from starlette_flash.flash import flash_processor
 
-from myproj.config.settings import settings
-from myproj.organizations.service import get_current_organization
+from {{cookiecutter.project_name}}.config.settings import settings
+from {{cookiecutter.project_name}}.organizations.service import get_current_organization
 
 context_processors = [
     app_processor,

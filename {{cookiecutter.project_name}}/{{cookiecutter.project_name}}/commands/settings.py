@@ -41,7 +41,7 @@ def show_settings_command(paths: list[str]) -> None:
         if dataclasses.is_dataclass(current):
             printer.dump(current)
         else:
-            printer.print_variable(path, current)
+            print_variable(path, current)
 
 
 @settings_commands.command(name="env")
@@ -52,7 +52,7 @@ def get_envvar_command(envvar: list[str]) -> None:
     printer.print("")
     printer.header("Variables")
     for var_name in envvar:
-        printer.print_variable(var_name, os.environ.get(var_name))
+        print_variable(var_name, os.environ.get(var_name))
 
 
 @settings_commands.command(name="secrets")

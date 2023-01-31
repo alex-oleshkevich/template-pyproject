@@ -1,9 +1,8 @@
 import wtforms
 from kupala.contrib.forms import AsyncForm
+from kupala.contrib.forms.file import AsyncFileField
 from starlette_babel import gettext_lazy as _
 from timezones import zones
-
-import {{cookiecutter.project_name}}.base.forms
 
 
 class CreateOrganizationForm(AsyncForm):
@@ -13,4 +12,4 @@ class CreateOrganizationForm(AsyncForm):
     timezone = wtforms.SelectField(
         _("Timezone"), choices=[(name, formatted) for _, name, formatted in zones.get_timezones()]
     )
-    logo = {{cookiecutter.project_name}}.base.forms.AsyncFileField(_("Logo"), upload_to="organizations/{pk}/logo_{prefix}_{file_name}")
+    logo = AsyncFileField(_("Logo"), upload_to="organizations/{pk}/logo_{prefix}_{file_name}")

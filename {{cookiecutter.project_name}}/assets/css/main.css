@@ -3,3 +3,17 @@
 @import "tailwindcss/utilities";
 @import "notyf/notyf.min.css";
 @import "components.css";
+
+/* main menu */
+.main-menu-item {
+    @apply px-2 py-1.5;
+    @apply rounded-md flex items-center gap-3 w-full mb-1 hover:bg-slate-700 text-gray-100 active:bg-slate-800;
+}
+
+.main-menu-item.active {
+    @apply bg-sky-600 text-sky-100 hover:bg-sky-700 active:bg-sky-800;
+}
+
+[x-cloak] {
+    display: none;
+}

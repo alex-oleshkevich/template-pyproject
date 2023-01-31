@@ -27,7 +27,7 @@ ENV = "test" if IS_TESTING else config('APP_ENV', default="production")
 @dataclasses.dataclass(frozen=True)
 class AppSettings:
     secret_key: str = secret("secret_key.secret", "")
-    debug: bool = False
+    debug: bool = config('APP_DEBUG', cast=bool, default=False)
     environment: str = ENV
     base_url: str = "http://localhost:8000"
     app_name: str = "{{cookiecutter.project_name}}"

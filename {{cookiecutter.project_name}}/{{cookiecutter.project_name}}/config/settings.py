@@ -139,7 +139,7 @@ class Settings(AppSettings):
     database: DatabaseSettings = DatabaseSettings()
     sentry: SentrySettings = SentrySettings()
     release: ReleaseSettings = ReleaseSettings()
-    security: SecuritySettings = SecuritySettings()
+    security: SecuritySettings = dataclasses.field(default_factory=SecuritySettings)
     mail: MailSettings = MailSettings()
     localization: LocalizationSettings = LocalizationSettings()
     session: SessionSettings = SessionSettings()

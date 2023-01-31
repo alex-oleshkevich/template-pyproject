@@ -29,22 +29,10 @@ async def get_user_organizations(session: AsyncSession, user_id: int) -> Collect
     return await query(session).all(stmt)
 
 
-async def create_organization(
-    session: AsyncSession,
-    owner_id: int,
-    name: str,
-    logo: str | None = None,
-    timezone: str | None = None,
-    support_email: str | None = None,
-    support_phone: str | None = None,
-) -> Organization:
+async def create_organization(session: AsyncSession, owner_id: int, name: str) -> Organization:
     organization = Organization(
         name=name,
-        logo=logo,
         owner_id=owner_id,
-        timezone=timezone,
-        support_email=support_email,
-        support_phone=support_phone,
     )
     member = Member(organization=organization, user_id=owner_id, permissions=["admin", "owner"])
     session.add(organization)

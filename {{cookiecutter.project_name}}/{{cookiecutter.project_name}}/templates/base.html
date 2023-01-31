@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ request.language }}" class="h-full {% block body_class %}{% endblock %}">
+<html lang="{{ request.language }}" class="h-full">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <meta name="msapplication-TileColor" content="#206bc4" />
-    <meta name="theme-color" content="#206bc4" />
+    <meta name="theme-color" content="rgb(15,23,42)" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="mobile-web-app-capable" content="yes" />
@@ -19,14 +19,14 @@
 
     <link rel="icon" href="{{ static_url('logo_square.svg') }}" />
     <link rel="shortcut icon" href="{{ static_url('logo_square.svg') }}" />
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
           rel="stylesheet" />
 
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/htmx/1.8.2/htmx.min.js"></script>
-    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+    <link href="{{ static_url('main.css') }}" rel="stylesheet" />
 
-    <link href="{{ static_url('main.css') ~ '?' ~ range(0, 1000)|random }}" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/htmx/1.8.2/htmx.min.js"></script>
+    <script src="{{ static_url('main.js') }}"></script>
 
     <style>
     [x-cloak] {
@@ -37,7 +37,7 @@
     {% block head %}{% endblock %}
     {% block head_scripts %}{% endblock %}
 </head>
-<body class="antialiased h-full" x-cloak="" x-data="{}">
+<body class="antialiased h-full" x-cloak x-data="{}">
 {% block main %}{% endblock %}
 {% block page_scripts %}{% endblock %}
 
@@ -48,6 +48,5 @@
 {% endif %}
 
 <div id="modals"></div>
-<script src="{{ static_url('main.js') }}"></script>
 </body>
 </html>

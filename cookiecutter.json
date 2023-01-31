@@ -1,6 +1,6 @@
 {
   "project_name": "myproj",
-  "python_version": "3.10",
+  "python_version": "3.11",
   "github_username": "alex-oleshkevich",
   "_copy_without_render": [
     "*.html",

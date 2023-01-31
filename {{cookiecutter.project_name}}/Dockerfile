@@ -13,7 +13,7 @@ VOLUME /code/
 
 ### STAGE 2 ###
 
-FROM python:3.10-slim
+FROM python:{{cookiecutter.python_version}}-slim
 ARG REPO_URL=''
 LABEL org.opencontainers.image.source $REPO_URL
 ARG PROJECT=takinada

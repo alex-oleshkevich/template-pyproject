@@ -30,7 +30,7 @@ class AppSettings:
     debug: bool = False
     environment: str = ENV
     base_url: str = "http://localhost:8000"
-    app_name: str = "myproj"
+    app_name: str = "{{cookiecutter.project_name}}"
     project_dir: Path = project_dir
     package_dir: Path = package_dir
     package_name: str = package_name
@@ -54,7 +54,7 @@ class RedisSettings:
 
 @dataclasses.dataclass(frozen=True)
 class DatabaseSettings:
-    database_url: str = secret("database_url.secret", "postgresql+asyncpg://postgres:postgres@localhost/myproj")
+    database_url: str = secret("database_url.secret", "postgresql+asyncpg://postgres:postgres@localhost/{{cookiecutter.project_name}}")
     echo: bool = False
     pool_size: int = 5
     pool_max_overflow: int = 10
@@ -117,7 +117,7 @@ class StorageSettings:
     default: typing.Literal["local", "s3"] = "local"
     local: LocalizationSettings = LocalStorageSettings()
     s3: S3StorageSettings = S3StorageSettings(
-        bucket_name="uploads.myproj.io",
+        bucket_name="uploads.{{cookiecutter.project_name}}.io",
         region_name="eu-central-1",
         signed_link_ttl=300,
         aws_access_key_id=os.environ.get("APP_STORAGE_UPLOADS_AWS_ACCESS_KEY", ""),
@@ -153,7 +153,7 @@ def new_settings(**overrides: typing.Any) -> Settings:
 
 
 def new_settings_for_test() -> Settings:
-    test_database_url = "postgresql+asyncpg://postgres:postgres@localhost/myproj_test"
+    test_database_url = "postgresql+asyncpg://postgres:postgres@localhost/{{cookiecutter.project_name}}_test"
     return new_settings(
         debug=True,
         environment="test",

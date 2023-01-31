@@ -1,5 +1,5 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
-const colors = require("tailwindcss/colors");
+const defaultColors = require("tailwindcss/colors");
 
 module.exports = {
     content: ["../{{ cookiecutter.project_name }}/**/*.html", "./js/**/*.ts"],
@@ -14,8 +14,7 @@ module.exports = {
                 sans: ["Inter", ...defaultTheme.fontFamily.sans],
             },
             colors: {
-                primary: colors.blue,
-                secondary: colors.slate,
+                accent: defaultColors.blue
             },
         },
     },

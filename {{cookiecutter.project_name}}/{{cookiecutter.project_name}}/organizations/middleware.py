@@ -5,10 +5,10 @@ from starlette.responses import RedirectResponse
 from starlette.types import ASGIApp, Receive, Scope, Send
 
 from {{cookiecutter.project_name}}.models.organizations import Organization
-from {{cookiecutter.project_name}}.organizations.service import get_current_organization
+from {{cookiecutter.project_name}}.organizations.service import get_current_organization, get_user_organizations
 
 
-class OrganizationMiddleware:
+class LoadOrganizationMiddleware:
     def __init__(self, app: ASGIApp, cookie_name: str = "organization_id") -> None:
         self.app = app
         self.cookie_name = cookie_name
@@ -20,9 +20,12 @@ class OrganizationMiddleware:
 
         with suppress(TypeError, ValueError):
             request = Request(scope)
-            organization_id = int(request.session.get(self.cookie_name, request.cookies.get(self.cookie_name, "")))
-            if organization_id:
-                request.state.organization = await Organization.get_or_none(request.state.db, organization_id)
+            if organization_id := request.session.get(self.cookie_name, request.cookies.get(self.cookie_name, "")):
+                request.state.organization = await Organization.get_or_none(request.state.db, int(organization_id))
+            else:
+                user_organizations = await get_user_organizations(request.state.db, request.user.id)
+                if len(user_organizations):
+                    request.state.organization = user_organizations[0]
 
         await self.app(scope, receive, send)
 

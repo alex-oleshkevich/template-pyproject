@@ -30,8 +30,13 @@ class Plan(Base, Timestamps):
     description: Mapped[str] = mapped_column(sa.Text, default="", server_default="")
     package: Mapped[ShortString]
 
+
     @classmethod
-    async def get_free_plan(cls, session: AsyncSession) -> Plan:
+    async def get_free_plan(cls, session: AsyncSession) -> Plan | None:
+        return await query(session).one_or_none(sa.select(Plan).filter_by(package=FREE_PACKAGE.name))
+
+    @classmethod
+    async def get_free_plan_or_raise(cls, session: AsyncSession) -> Plan:
         return await query(session).one_or_raise(
             sa.select(Plan).filter_by(package=FREE_PACKAGE.name),
             PlanDoesNotExists(),
@@ -43,6 +48,12 @@ class Plan(Base, Timestamps):
         session.add(plan)
         await session.flush()
         return plan
+
+    @classmethod
+    async def ensure_free_plan_exists(cls, session: AsyncSession) -> None:
+        if not await cls.get_free_plan(session):
+            await cls.create_free_plan(session)
+            await session.commit()
 
 
 class Subscription(Base):

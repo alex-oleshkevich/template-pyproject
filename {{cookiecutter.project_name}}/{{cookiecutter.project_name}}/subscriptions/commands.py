@@ -9,6 +9,6 @@ group = Group("subscriptions")
 async def create_free_plan(dbsession: DbSession) -> None:
     async with dbsession.begin():
         try:
-            await Plan.get_free_plan(dbsession)
+            await Plan.get_free_plan_or_raise(dbsession)
         except PlanDoesNotExists:
             await Plan.create_free_plan(dbsession)

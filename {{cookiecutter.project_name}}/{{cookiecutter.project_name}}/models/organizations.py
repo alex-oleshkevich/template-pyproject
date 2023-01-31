@@ -23,10 +23,6 @@ class Organization(Base):
 
     id: Mapped[IntPk]
     name: Mapped[str] = mapped_column(sa.String(512), nullable=False)
-    logo: Mapped[str | None] = mapped_column(sa.String(512), default="", server_default="")
-    support_phone: Mapped[str] = mapped_column(sa.String(128), default="", server_default="")
-    support_email: Mapped[str] = mapped_column(sa.String(128), default="", server_default="")
-    timezone: Mapped[str] = mapped_column(sa.String(32), default="UTC")
     owner_id: Mapped[UserFk]
     created_at: Mapped[AutoCreatedAt]
     updated_at: Mapped[AutoUpdatedAt]

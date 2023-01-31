@@ -10,13 +10,13 @@ from {{cookiecutter.project_name}}.admin import admin
 from {{cookiecutter.project_name}}.base.storages import get_file_storage
 from {{cookiecutter.project_name}}.healthcheck import routes as healthcheck_routes
 from {{cookiecutter.project_name}}.metrics import routes as metrics_routes
-from {{cookiecutter.project_name}}.organizations.middleware import OrganizationMiddleware, RequireOrganizationMiddleware
+from {{cookiecutter.project_name}}.organizations.middleware import LoadOrganizationMiddleware, RequireOrganizationMiddleware
 from {{cookiecutter.project_name}}.organizations.views import routes as organization_routes
 from {{cookiecutter.project_name}}.views import routes as public_routes
 
 manage_middleware = [
     Middleware(LoginRequiredMiddleware),
-    Middleware(OrganizationMiddleware),
+    Middleware(LoadOrganizationMiddleware),
     Middleware(RequireOrganizationMiddleware, redirect_path_name="organizations.select"),
 ]
 

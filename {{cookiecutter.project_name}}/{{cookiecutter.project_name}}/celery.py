@@ -1,3 +1,4 @@
+import asyncio
 import functools
 import typing
 
@@ -45,6 +46,10 @@ def async_task(fn: typing.Callable[_PS, typing.Awaitable[_RT]]) -> typing.Callab
         async def main() -> _RT:
             return await fn(*args, **kwargs)
 
-        return anyio.run(main)
+        try:
+            loop = asyncio.get_event_loop()
+            return loop.run_until_complete(main())
+        except RuntimeError:
+            anyio.run(main)
 
     return decorator

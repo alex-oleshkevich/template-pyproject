@@ -114,18 +114,7 @@ class S3StorageSettings:
 
 @dataclasses.dataclass(frozen=True)
 class StorageSettings:
-    default: typing.Literal["local", "s3"] = "local"
     local: LocalizationSettings = LocalStorageSettings()
-    s3: S3StorageSettings = S3StorageSettings(
-        bucket_name="uploads.{{cookiecutter.project_name}}.io",
-        region_name="eu-central-1",
-        signed_link_ttl=300,
-        aws_access_key_id=os.environ.get("APP_STORAGE_UPLOADS_AWS_ACCESS_KEY", ""),
-        aws_secret_access_key=secret(
-            "aws_secret_access_key.secret",
-            os.environ.get("APP_STORAGE_UPLOADS_AWS_SECRET_KEY", ""),
-        ),
-    )
 
 
 @dataclasses.dataclass(frozen=True)

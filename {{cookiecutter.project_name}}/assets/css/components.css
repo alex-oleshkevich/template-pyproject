@@ -47,7 +47,7 @@
     h4,
     h5,
     h6 {
-        @apply mb-2;
+        @apply mb-3 font-medium;
     }
 
     h1 {
@@ -135,6 +135,10 @@
         @apply block text-sm font-medium text-gray-700;
     }
 
+    .form-actions {
+        @apply flex flex-col md:flex-row items-start md:items-center gap-2 mt-6;
+    }
+
     .btn {
         @apply inline-flex items-center rounded-md border border-gray-300 bg-white px-3 py-2 text-sm font-medium leading-4 text-gray-700 shadow-sm gap-2 text-sm;
         @apply hover:bg-gray-50 h-[34px];
@@ -143,7 +147,7 @@
     }
 
     .btn:focus:not(:active) {
-        @apply focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-2;
+        @apply focus:border-blue-400 focus:ring focus:ring-blue-200 focus:ring-opacity-50;
     }
 
     .btn.btn-accent:not(:disabled) {
@@ -181,13 +185,34 @@
     }
 
     .btn.btn-text {
-        @apply border-transparent bg-transparent;
+        @apply border-transparent bg-transparent shadow-none;
         @apply hover:bg-gray-100 active:bg-gray-200;
     }
 
     .btn.btn-icon {
         aspect-ratio: 1;
         @apply border-transparent p-1 flex items-center justify-center bg-transparent shadow-none;
+    }
+
+    .btn.btn-link {
+        @apply border-transparent flex items-center justify-center gap-2 bg-transparent shadow-none text-blue-700;
+        @apply hover:bg-blue-50;
+    }
+
+    .btn.loading::before {
+        content: "";
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' stroke-width='1' stroke='currentColor' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath stroke='none' d='M0 0h24v24H0z' fill='none'%3E%3C/path%3E%3Cpath d='M12 3a9 9 0 1 0 9 9'%3E%3C/path%3E%3C/svg%3E");
+        @apply h-6 w-6 flex items-center justify-center;
+        animation: rotator 1s linear infinite;
+    }
+
+    @keyframes rotator {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
     }
 
     .btn > svg {
@@ -290,20 +315,20 @@
     }
 
     .alert {
-        @apply mb-4 rounded-md p-4 text-sm border rounded flex items-center gap-3;
+        @apply mb-4 rounded-md p-4 text-sm border rounded flex flex-col items-start justify-center;
     }
 
     .alert.alert-success {
-        @apply bg-green-50 text-green-500 border-green-200;
+        @apply bg-green-50 text-green-700 border-green-200;
     }
 
     .alert.alert-danger,
     .alert.alert-error {
-        @apply bg-red-50 text-red-500 border-red-200;
+        @apply bg-red-50 text-red-700 border-red-200;
     }
 
     .alert.alert-info {
-        @apply bg-blue-50 text-blue-500 border-blue-200;
+        @apply bg-blue-50 text-blue-700 border-blue-200;
     }
 
     .alert.alert-warning {
@@ -311,7 +336,23 @@
     }
 
     .modal {
-        @apply fixed inset-0 z-10 overflow-y-auto md:items-center items-end justify-center flex p-2 md:p-0;
+        @apply fixed inset-0 z-10 overflow-y-auto md:items-center items-center justify-center flex p-2 md:p-0;
+    }
+
+    .modal-lg .modal-dialog {
+        @apply max-w-2xl;
+    }
+
+    .modal-xl .modal-dialog {
+        @apply max-w-3xl;
+    }
+
+    .modal-2xl .modal-dialog {
+        @apply max-w-4xl;
+    }
+
+    .modal-3xl .modal-dialog {
+        @apply max-w-5xl;
     }
 
     .modal::after {
@@ -328,6 +369,8 @@
     }
 
     .modal main {
+        max-height: 80vh;
+        overflow-y: auto;
         @apply px-4;
     }
 
@@ -377,24 +420,30 @@
     }
 
     .pagination {
-        @apply flex flex-col justify-between md:flex-row md:items-center font-medium;
+        @apply flex flex-col justify-between md:flex-row md:items-center font-medium gap-3;
     }
 
     .pagination-controls {
         @apply flex items-center gap-1;
     }
 
-    .pagination-controls a,
-    .pagination-controls span {
+    .pagination-controls > a,
+    .pagination-controls > span {
         @apply px-4 py-2 rounded-md inline-flex items-center justify-center gap-2;
         @apply hover:bg-slate-100 active:bg-slate-200;
     }
 
-    .pagination-controls span {
+    .pagination-controls > a:first-child:has(svg) span,
+    .pagination-controls > a:last-child:has(svg) span {
+        /* hide Previous/Next labels on mobiles */
+        @apply hidden md:inline;
+    }
+
+    .pagination-controls > span {
         @apply text-gray-600 hover:bg-inherit active:bg-inherit;
     }
 
-    .pagination-controls a.active {
+    .pagination-controls > a.active {
         @apply text-blue-700 bg-blue-100 active:bg-blue-200;
     }
 
@@ -437,6 +486,63 @@
         @apply h-4;
     }
 
+    .progress-accent .progress-bar {
+        @apply bg-accent-500;
+    }
+
+    .progress-gray .progress-bar {
+        @apply bg-gray-500;
+    }
+
+    .progress-blue .progress-bar {
+        @apply bg-blue-500;
+    }
+
+    .progress-red .progress-bar {
+        @apply bg-red-500;
+    }
+
+    .progress-red .progress-bar {
+        @apply bg-red-500;
+    }
+
+    .progress-yellow .progress-bar {
+        @apply bg-yellow-500;
+    }
+
+    .progress-green .progress-bar {
+        @apply bg-green-500;
+    }
+
+    .progress-indigo .progress-bar {
+        @apply bg-indigo-500;
+    }
+
+    .progress-purple .progress-bar {
+        @apply bg-purple-500;
+    }
+
+    .progress-pink .progress-bar {
+        @apply bg-pink-500;
+    }
+
+    .progress-label {
+        @apply flex items-center justify-between mb-1 text-xs;
+    }
+
+    .progress-label-md,
+    .progress-label-lg {
+        @apply text-sm;
+    }
+
+    .progress-label dt {
+        @apply font-medium text-gray-700;
+    }
+
+    .progress-label dd {
+        @apply text-gray-500;
+    }
+
     @keyframes indeterminate-progress {
         0% {
             transform: translateX(0);
@@ -449,10 +555,11 @@
 
     .tabs {
         @apply border-b border-b-gray-300 flex items-center gap-4;
+        overflow-x: auto;
     }
 
     .tabs .tab {
-        @apply -mb-px inline-flex cursor-pointer items-center gap-2 px-1 py-3 text-gray-800;
+        @apply -mb-px inline-flex cursor-pointer items-center gap-2 px-1 py-3 text-gray-800 whitespace-nowrap;
         @apply hover:text-blue-700;
     }
 
@@ -513,7 +620,6 @@
     }
 
     .list-menu {
-        @apply divide-y divide-gray-100;
     }
 
     .list-menu-item {
@@ -530,6 +636,10 @@
         @apply cursor-not-allowed text-gray-400;
     }
 
+    .list-menu-item.active:not(.disabled) {
+        @apply bg-gray-200;
+    }
+
     .list-menu-item svg {
         @apply h-5 w-5 text-gray-400;
     }
@@ -540,6 +650,46 @@
 
     .list-menu-item > * + svg {
         @apply ml-auto;
+    }
+
+    .dot {
+        @apply rounded-full h-4 w-4 bg-gray-800 h-3 w-3;
+    }
+
+    .dot-sm {
+        @apply h-2 w-2;
+    }
+
+    .dot-lg {
+        @apply h-4 w-4;
+    }
+
+    .dot.dot-red {
+        @apply bg-red-500;
+    }
+
+    .dot.dot-yellow {
+        @apply bg-yellow-500;
+    }
+
+    .dot.dot-green {
+        @apply bg-green-500;
+    }
+
+    .dot.dot-blue {
+        @apply bg-blue-500;
+    }
+
+    .dot.dot-indigo {
+        @apply bg-indigo-500;
+    }
+
+    .dot.dot-purple {
+        @apply bg-purple-500;
+    }
+
+    .dot.dot-pink {
+        @apply bg-pink-500;
     }
 }
 

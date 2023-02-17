@@ -3,6 +3,7 @@
 @import "tailwindcss/utilities";
 @import "notyf/notyf.min.css";
 @import "components.css";
+@import "layouts.css";
 
 /* main menu */
 .main-menu-item {

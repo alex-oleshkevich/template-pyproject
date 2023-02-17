@@ -1,6 +1,6 @@
 ### STAGE 1 ###
 FROM node:19-alpine AS frontend
-ARG PROJECT=takinada
+ARG PROJECT={{cookiecutter.project_name}}
 WORKDIR /code
 
 ADD assets/package.json assets/yarn.lock assets/
@@ -16,7 +16,7 @@ VOLUME /code/
 FROM python:{{cookiecutter.python_version}}-slim
 ARG REPO_URL=''
 LABEL org.opencontainers.image.source $REPO_URL
-ARG PROJECT=takinada
+ARG PROJECT={{cookiecutter.project_name}}
 
 ENV PIP_NO_CACHE_DIR=off \
     PIP_DISABLE_PIP_VERSION_CHECK=1

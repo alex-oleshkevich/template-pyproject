@@ -1,29 +1,28 @@
-import typing
-
+import sqlalchemy as sa
 import wtforms
-from ohmyadmin import display
-from ohmyadmin.display import DisplayField
-from ohmyadmin.ext.sqla import SQLAlchemyResource
-from starlette.requests import Request
+from ohmyadmin.contrib.sqlalchemy import SQLADataSource
+from ohmyadmin.formatters import AvatarFormatter, BoolFormatter, DateFormatter
+from ohmyadmin.resources import Resource
+from ohmyadmin.views.table import TableColumn
 
 from {{cookiecutter.project_name}}.models.users import User
 
 
-class UserResource(SQLAlchemyResource):
+class UserForm(wtforms.Form):
+    first_name = wtforms.StringField()
+    last_name = wtforms.StringField()
+    email = wtforms.EmailField(validators=[wtforms.validators.data_required()])
+    active = wtforms.BooleanField()
+
+
+class UserResource(Resource):
     icon = "users"
-    entity_class = User
-
-    def get_list_fields(self) -> typing.Iterable[DisplayField]:
-        yield DisplayField("avatar", component=display.Image())
-        yield DisplayField(
-            "display_name", sortable=True, sort_by="last_name", searchable=True, search_in="last_name", link=True
-        )
-        yield DisplayField("email", sortable=True, searchable=True)
-        yield DisplayField("joined_at", component=display.DateTime())
-        yield DisplayField("active", component=display.Boolean())
-
-    def get_form_fields(self, request: Request) -> typing.Iterable[wtforms.Field]:
-        yield wtforms.StringField(name="first_name")
-        yield wtforms.StringField(name="last_name")
-        yield wtforms.EmailField(name="email")
-        yield wtforms.BooleanField(name="active")
+    datasource = SQLADataSource(User, sa.select(User).order_by(User.joined_at.desc()))
+    form_class = UserForm
+    columns = [
+        TableColumn("avatar", formatter=AvatarFormatter()),
+        TableColumn("display_name", sort_by="last_name", sortable=True, searchable=True, search_in="last_name"),
+        TableColumn("email", searchable=True),
+        TableColumn("active", formatter=BoolFormatter()),
+        TableColumn("joined_at", formatter=DateFormatter()),
+    ]

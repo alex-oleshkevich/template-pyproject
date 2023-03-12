@@ -6,6 +6,7 @@
         ".github/*.",
         "deploy/*",
         "*.html",
-        "*.yaml"
+        "*.yaml",
+        "*.yml"
     ]
 }

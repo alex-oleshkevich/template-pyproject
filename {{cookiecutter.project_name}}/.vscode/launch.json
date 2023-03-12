@@ -1,0 +1,34 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: uvicorn",
+            "type": "python",
+            "request": "launch",
+            "module": "uvicorn",
+            "args": [
+                "--reload",
+                "${workspaceFolderBasename}.main:app"
+            ],
+            "justMyCode": true,
+            "jinja": true
+        },
+        {
+            "name": "Python: uvicorn (8001)",
+            "type": "python",
+            "request": "launch",
+            "module": "uvicorn",
+            "args": [
+                "--reload",
+                "--port",
+                "8001",
+                "${workspaceFolderBasename}.main:app"
+            ],
+            "justMyCode": true,
+            "jinja": true
+        }
+    ]
+}

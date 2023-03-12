@@ -1,13 +1,13 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="celery worker" type="PythonConfigurationType" factoryName="Python">
-    <module name="plannister" />
+    <module name="{{cookiecutter.project_name}}" />
     <option name="INTERPRETER_OPTIONS" value="" />
     <option name="PARENT_ENVS" value="true" />
     <envs>
       <env name="PYTHONUNBUFFERED" value="1" />
     </envs>
     <option name="SDK_HOME" value="$PROJECT_DIR$/.venv/bin/python" />
-    <option name="SDK_NAME" value="Python 3.10 (plannister)" />
+    <option name="SDK_NAME" value="Python 3.10 ({{cookiecutter.project_name}})" />
     <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     <option name="IS_MODULE_SDK" value="false" />
     <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -24,7 +24,7 @@
       </ENTRIES>
     </EXTENSION>
     <option name="SCRIPT_NAME" value="celery" />
-    <option name="PARAMETERS" value="-A plannister worker -l info" />
+    <option name="PARAMETERS" value="-A {{cookiecutter.project_name}} worker -l info" />
     <option name="SHOW_COMMAND_LINE" value="false" />
     <option name="EMULATE_TERMINAL" value="false" />
     <option name="MODULE_MODE" value="true" />

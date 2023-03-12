@@ -24,13 +24,9 @@ __pycache__
 *.egg-info
 output.css
 
-wp.js
 .cache
 *.html.py
-var/media/*
-!var/media/.gitkeep
 .coverage
-.private
 
 /.waypoint/
 storage/

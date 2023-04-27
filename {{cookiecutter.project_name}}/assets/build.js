@@ -1,25 +1,24 @@
 #!/usr/bin/node
-const esbuild = require("esbuild");
-const copyStaticFiles = require("esbuild-copy-static-files");
+const esbuild = require('esbuild');
+const copyStaticFiles = require('esbuild-copy-static-files');
 
 const args = process.argv.slice(2);
-const watch = args.includes("--watch");
-const build = args.includes("--build");
+const mode = args.includes('--watch') ? 'watch' : 'build';
 
-const loader = {};
+const projectDirectory = process.env.PACKAGE_NAME;
 
 const plugins = [
     copyStaticFiles({
-        src: "./static",
-        dest: "../{{ cookiecutter.project_name }}/statics/",
+        src: './static',
+        dest: `../${projectDirectory}/statics/`,
         dereference: true,
         errorOnExist: false,
         preserveTimestamps: true,
         recursive: true,
     }),
     copyStaticFiles({
-        src: "./static/logo.svg",
-        dest: "../{{ cookiecutter.project_name }}/templates/mail/logo.svg",
+        src: './static/logo.svg',
+        dest: `../${projectDirectory}/templates/mail/logo.svg`,
         dereference: true,
         errorOnExist: false,
         preserveTimestamps: true,
@@ -27,45 +26,27 @@ const plugins = [
     }),
 ];
 
-const external = ["/fonts/*", "/images/*"];
-
-let options = {
-    entryPoints: ["./js/main.ts"],
-    outdir: "../{{ cookiecutter.project_name }}/statics/",
-    target: "esnext",
-    format: 'esm',
-    bundle: true,
-    sourcemap: true,
-    define: {},
-    treeShaking: true,
-    watch: false,
-    external,
-    loader,
-    plugins,
-};
-
-if (watch) {
-    options = {
-        ...options,
-        watch: true,
-        sourcemap: "inline",
-    };
-}
-
-if (build) {
-    options = {
-        ...options,
-        minify: true,
-    };
-}
-
-const promise = esbuild.build(options);
-if (watch) {
-    promise.then((result) => {
-        process.stdin.on("close", () => {
-            process.exit(0);
-        });
-
-        process.stdin.resume();
+async function main() {
+    const context = await esbuild.context({
+        entryPoints: ['./js/main.ts'],
+        outdir: `../${projectDirectory}/statics`,
+        target: 'esnext',
+        format: 'esm',
+        bundle: true,
+        sourcemap: mode == 'build' ? true : 'inline',
+        define: {},
+        treeShaking: true,
+        loader: {},
+        plugins: plugins,
+        minify: mode == 'build',
+        external: ['/fonts/*', '/images/*'],
+        logLevel: 'debug',
     });
+    if (mode == 'watch') {
+        await context.watch();
+    } else {
+        await context.rebuild();
+    }
 }
+
+main().catch(console.error);

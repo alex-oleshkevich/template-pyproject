@@ -5,10 +5,10 @@ from kupala.contrib.sqlalchemy.dependencies import DbSession
 from kupala.injectables import FromPath
 from kupala.routing import Routes
 from starlette.background import BackgroundTask
+from starlette.requests import Request
 from starlette.responses import Response
 from starlette_babel import gettext_lazy as _
 
-from {{cookiecutter.project_name}}.base.http import HttpRequest
 from {{cookiecutter.project_name}}.config.dependencies import CurrentOrganization
 from {{cookiecutter.project_name}}.config.templating import templates
 from {{cookiecutter.project_name}}.manage.depedencies import CurrentMember
@@ -21,7 +21,7 @@ routes = Routes()
 
 
 @routes("/team", name="manage.teams")
-async def team_view(request: HttpRequest, session: DbSession) -> Response:
+async def team_view(request: Request, session: DbSession) -> Response:
     table = TeamTable()
     page = await table.paginate(request, session)
 
@@ -41,7 +41,7 @@ async def team_view(request: HttpRequest, session: DbSession) -> Response:
 
 @routes.delete("/team/{member_id:int}/delete", name="manage.teams.delete")
 async def delete_member_view(
-    request: HttpRequest,
+    request: Request,
     session: DbSession,
     organization: CurrentOrganization,
     member_id: FromPath[int],
@@ -63,7 +63,7 @@ async def delete_member_view(
 
 @routes.get_or_post("/team/invite", name="manage.teams.invite")
 async def invite_member_view(
-    request: HttpRequest,
+    request: Request,
     session: DbSession,
     member: CurrentMember,
     organization: CurrentOrganization,
@@ -119,7 +119,7 @@ async def invite_member_view(
 
 
 @routes("/teams/invites", name="manage.teams.invites")
-async def invites_view(request: HttpRequest, session: DbSession, organization: CurrentOrganization) -> Response:
+async def invites_view(request: Request, session: DbSession, organization: CurrentOrganization) -> Response:
     members = await organization.get_membership_invitations(session)
     return templates.TemplateResponse(
         request,

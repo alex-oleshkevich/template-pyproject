@@ -6,7 +6,6 @@ import sys
 import typing
 from pathlib import Path
 
-from dotenv import load_dotenv
 from kupala.config import Secrets
 from starlette.config import Config
 
@@ -14,23 +13,19 @@ package_name = __name__.split(".")[0]
 package_dir = Path(str(importlib.import_module(package_name).__file__)).parent
 project_dir = package_dir.parent
 
-env_file = project_dir / ".env"
-if env_file.exists():
-    load_dotenv(env_file)
-
-config = Config()
+config = Config(env_file=project_dir / ".env", env_prefix="")
 secret = Secrets("/run/secrets")
 IS_TESTING = "pytest" in sys.argv[0]
-ENV = "test" if IS_TESTING else config('APP_ENV', default="production")
+ENV = "test" if IS_TESTING else config("APP_ENV", default="production")
 
 
 @dataclasses.dataclass(frozen=True)
 class AppSettings:
-    secret_key: str = secret("secret_key.secret", "")
-    debug: bool = config('APP_DEBUG', cast=bool, default=False)
     environment: str = ENV
-    base_url: str = "http://localhost:8000"
-    app_name: str = "{{cookiecutter.project_name}}"
+    secret_key: str = secret("secret_key.secret", "")
+    debug: bool = config("APP_DEBUG", cast=bool, default=False)
+    base_url: str = config("APP_URL", default='http://localhost:8000')
+    app_name: str = config('APP_NAME', default="{{cookiecutter.project_name}}")
     project_dir: Path = project_dir
     package_dir: Path = package_dir
     package_name: str = package_name
@@ -39,7 +34,7 @@ class AppSettings:
 
 @dataclasses.dataclass(frozen=True)
 class ReleaseSettings:
-    release_id: str = config('APP_RELEASE_ID', default='')
+    release_id: str = config("APP_RELEASE_ID", default="")
 
 
 @dataclasses.dataclass(frozen=True)
@@ -54,7 +49,10 @@ class RedisSettings:
 
 @dataclasses.dataclass(frozen=True)
 class DatabaseSettings:
-    database_url: str = secret("database_url.secret", "postgresql+asyncpg://postgres:postgres@localhost/{{cookiecutter.project_name}}")
+    database_url: str = secret(
+        "database_url.secret",
+        "postgresql+asyncpg://postgres:postgres@localhost/{{cookiecutter.project_name}}",
+    )
     echo: bool = False
     pool_size: int = 5
     pool_max_overflow: int = 10
@@ -79,7 +77,7 @@ class MailSettings:
     from_email: str = "info@example.com"
 
 
-@dataclasses.dataclass(frozen=ENV != 'test')
+@dataclasses.dataclass(frozen=ENV != "test")
 class SecuritySettings:
     post_login_redirect_path: str = "home-redirect"
     login_rate_limit: str = "10/minute"

@@ -9,8 +9,10 @@ from kupala.injectables import FromPath
 from kupala.responses import redirect_to_path
 from kupala.routing import Routes
 from sqlalchemy.orm import joinedload
+from starlette.requests import Request
 from starlette.responses import Response
 from starlette_babel import gettext_lazy as _
+from starlette_flash import flash
 
 from {{cookiecutter.project_name}}.base.http import HttpRequest
 from {{cookiecutter.project_name}}.config.dependencies import Settings
@@ -32,7 +34,7 @@ async def _fetch_invitation(session: DbSession, invitation_token: FromPath[str])
 
 @routes("/join-organization/{token:str}", name="onboarding.accept_organization_invitation")
 async def accept_member_invitation_view(
-    request: HttpRequest,
+    request: Request,
     session: DbSession,
     settings: Settings,
     token: FromPath[str],
@@ -50,7 +52,7 @@ async def accept_member_invitation_view(
 
 
 @routes("/member/finalize", name="onboarding.finalize_member_signup")
-async def finalize_member_signup_view(request: HttpRequest, session: DbSession, settings: Settings) -> Response:
+async def finalize_member_signup_view(request: Request, session: DbSession, settings: Settings) -> Response:
     try:
         signer = Signer(settings.secret_key)
         invitation_token = signer.unsign(request.session.pop("organization_invitation_token", "")).decode()
@@ -73,9 +75,9 @@ async def finalize_member_signup_view(request: HttpRequest, session: DbSession, 
         await session.commit()
 
         select_organization(request, invitation.organization_id)
-        request.flash.success(_("Welcome to {organization}.").format(organization=invitation.organization))
+        flash(request).success(_("Welcome to {organization}.").format(organization=invitation.organization))
         return redirect_to_path(request, "manage.dashboard")
     except BadSignature as ex:
         logging.exception(ex)
-        request.flash.error(_("Invalid request."))
+        flash(request).error(_("Invalid request."))
         return redirect_to_path(request, "register")

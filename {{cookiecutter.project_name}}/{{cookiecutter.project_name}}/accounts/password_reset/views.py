@@ -12,7 +12,7 @@ from starlette_flash import flash
 
 from {{cookiecutter.project_name}}.accounts.password_reset.forms import ChangePasswordForm, ForgotPasswordForm
 from {{cookiecutter.project_name}}.accounts.password_reset.mails import send_password_changed_mail, send_password_reset_link
-from {{cookiecutter.project_name}}.base.rate_limit import RateLimited, with_rate_limit
+from {{cookiecutter.project_name}}.accounts.rate_limit import RateLimited, with_rate_limit
 from {{cookiecutter.project_name}}.config.dependencies import Settings
 from {{cookiecutter.project_name}}.config.templating import templates
 from {{cookiecutter.project_name}}.models.users import User

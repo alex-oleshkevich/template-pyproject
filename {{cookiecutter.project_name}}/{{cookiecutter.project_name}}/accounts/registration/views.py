@@ -4,6 +4,7 @@ from kupala.injectables import FromPath
 from kupala.responses import redirect_to_path
 from kupala.routing import Routes
 from starlette.background import BackgroundTask
+from starlette.requests import Request
 from starlette.responses import RedirectResponse, Response
 from starlette_babel import gettext_lazy as _
 from starlette_flash import flash
@@ -16,8 +17,7 @@ from {{cookiecutter.project_name}}.accounts.registration.actions import (
 )
 from {{cookiecutter.project_name}}.accounts.registration.forms import RegisterAsyncForm
 from {{cookiecutter.project_name}}.accounts.registration.mails import send_confirm_email_mail
-from {{cookiecutter.project_name}}.base.http import HttpRequest
-from {{cookiecutter.project_name}}.base.rate_limit import RateLimited, with_rate_limit
+from {{cookiecutter.project_name}}.accounts.rate_limit import RateLimited, with_rate_limit
 from {{cookiecutter.project_name}}.config.dependencies import Settings
 from {{cookiecutter.project_name}}.config.templating import templates
 from {{cookiecutter.project_name}}.models.users import User
@@ -36,7 +36,7 @@ class RegistrationError(Exception):
 
 
 @routes.get_or_post("/register", name="register")
-async def register_view(request: HttpRequest, session: DbSession, settings: Settings) -> Response:
+async def register_view(request: Request, session: DbSession, settings: Settings) -> Response:
     prefill_data = request.session.get("form_prefill", {})
     form = await RegisterAsyncForm.from_request(request, context={"dbsession": session}, data=prefill_data)
 
@@ -100,7 +100,7 @@ async def register_view(request: HttpRequest, session: DbSession, settings: Sett
 
 @routes.get("/register/confirm/{token:str}", name="register_confirm_email")
 async def confirm_email_view(
-    request: HttpRequest, token: FromPath[str], session: DbSession, settings: Settings
+    request: Request, token: FromPath[str], session: DbSession, settings: Settings
 ) -> Response:
     try:
         signer = Signer(settings.secret_key)

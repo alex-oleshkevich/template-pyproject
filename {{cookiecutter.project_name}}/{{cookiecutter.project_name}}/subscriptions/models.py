@@ -85,35 +85,3 @@ class Subscription(Base):
         session.add(subscription)
         await session.flush([subscription])
         return subscription
-
-
-class Invoice(Base):
-    __tablename__ = "subscriptions_invoices"
-
-    class Status(TextChoices):
-        UNPAID = "unpaid"
-        PAID = "paid"
-
-    id: Mapped[IntPk]
-    number: Mapped[ShortString]
-    status: Mapped[ShortString]
-    created_at: Mapped[AutoCreatedAt]
-    user_id: Mapped[UserFk]
-    subscription_id: Mapped[int] = mapped_column(sa.ForeignKey("subscriptions.id"))
-    amount: Mapped[decimal.Decimal] = mapped_column(sa.Numeric, default=0, server_default="0")
-    tax: Mapped[decimal.Decimal] = mapped_column(sa.Numeric, default=0, server_default="0")
-    tax_rate: Mapped[int] = mapped_column(sa.Integer, default=0, server_default="0")
-
-
-class Payment(Base):
-    __tablename__ = "subscriptions_payments"
-
-    class Status(TextChoices):
-        UNPAID = "unpaid"
-
-    id: Mapped[IntPk]
-    user_id: Mapped[UserFk]
-    status: Mapped[ShortString]
-    total: Mapped[decimal.Decimal] = mapped_column(sa.Numeric, default=0, server_default="0")
-    created_at: Mapped[AutoCreatedAt]
-    paid_at: Mapped[datetime.datetime | None] = mapped_column(sa.DateTime(True))

@@ -4,6 +4,7 @@ from kupala.authentication import login_required
 from kupala.contrib.sqlalchemy.dependencies import DbSession
 from kupala.responses import redirect_to_path
 from kupala.routing import Routes
+from starlette.requests import Request
 from starlette.responses import Response
 from starlette_babel import gettext_lazy as _
 from starlette_flash import flash
@@ -17,7 +18,7 @@ routes = Routes()
 
 
 @routes.get_or_post("/select", name="organizations.select", guards=[login_required()])
-async def select_organization_view(request: HttpRequest, session: DbSession) -> Response:
+async def select_organization_view(request: Request, session: DbSession) -> Response:
     organizations = await get_user_organizations(session, request.user.id)
 
     if request.method == "POST":
@@ -45,7 +46,7 @@ async def select_organization_view(request: HttpRequest, session: DbSession) -> 
 
 
 @routes.get_or_post("/new", name="organizations.new", guards=[login_required()])
-async def new_organization_view(request: HttpRequest, session: DbSession) -> Response:
+async def new_organization_view(request: Request, session: DbSession) -> Response:
     form = await CreateOrganizationForm.from_request(
         request,
         data={

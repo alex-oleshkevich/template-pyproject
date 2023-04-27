@@ -7,10 +7,11 @@ from kupala.authentication import login
 from kupala.contrib.sqlalchemy.dependencies import DbSession
 from kupala.responses import redirect, redirect_to_path
 from kupala.routing import Routes
+from starlette_flash import flash
+from starlette.requests import Request
 from starlette.responses import Response
 from starlette_babel import gettext_lazy as _
 
-from {{cookiecutter.project_name}}.base.http import HttpRequest
 from {{cookiecutter.project_name}}.config.dependencies import Settings
 from {{cookiecutter.project_name}}.config.settings import get_settings
 from {{cookiecutter.project_name}}.models.users import User
@@ -29,19 +30,19 @@ GoogleClient = typing.Annotated[StarletteOAuth1App, lambda: oauth.create_client(
 
 
 @routes.get("/social/google", name="social_login.request.google")
-async def login_via_google(request: HttpRequest, google_client: GoogleClient) -> Response:
+async def login_via_google(request: Request, google_client: GoogleClient) -> Response:
     redirect_url = request.url_for("social_login.callback.google")
-    return await google_client.authorize_redirect(request, redirect_url)
+    return await google_client.authorize_redirect(request, str(redirect_url))
 
 
 @routes.get("/social/google/callback", name="social_login.callback.google")
 async def login_via_google_callback(
-    request: HttpRequest, google_client: GoogleClient, session: DbSession, settings: Settings
+    request: Request, google_client: GoogleClient, session: DbSession, settings: Settings
 ) -> Response:
     token: OAuth2Token = await google_client.authorize_access_token(request)
     user_info = token.get("userinfo")
     if not user_info:
-        request.flash.error(_("Authentication error."))
+        flash(request).error(_("Authentication error."))
         return redirect_to_path(request, "login")
 
     email = user_info["email"]
@@ -71,5 +72,5 @@ async def login_via_google_callback(
         redirect_url = success_url
 
     success_message = request.session.pop("success_message", _("Authenticated successfully."))
-    request.flash.success(success_message)
+    flash(request).success(success_message)
     return redirect(redirect_url)

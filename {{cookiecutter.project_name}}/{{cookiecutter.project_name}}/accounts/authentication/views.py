@@ -12,7 +12,7 @@ from starlette_flash import flash
 from {{cookiecutter.project_name}}.accounts.authentication.exceptions import AuthenticationError, InvalidCredentials, NoSuchUserError
 from {{cookiecutter.project_name}}.accounts.authentication.forms import LoginForm
 from {{cookiecutter.project_name}}.accounts.authentication.user_checks import UserCheck, reject_disabled_users
-from {{cookiecutter.project_name}}.base.rate_limit import RateLimited, with_rate_limit
+from {{cookiecutter.project_name}}.accounts.rate_limit import RateLimited, with_rate_limit
 from {{cookiecutter.project_name}}.config.dependencies import Settings
 from {{cookiecutter.project_name}}.config.templating import templates
 from {{cookiecutter.project_name}}.models.users import User

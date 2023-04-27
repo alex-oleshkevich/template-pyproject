@@ -2,6 +2,7 @@ from kupala.authentication import login_required
 from kupala.contrib.sqlalchemy.dependencies import DbSession
 from kupala.responses import redirect_back
 from kupala.routing import Routes
+from starlette.requests import Request
 from starlette.responses import Response
 from starlette_babel import gettext_lazy as _
 from starlette_flash import flash
@@ -17,12 +18,12 @@ routes = Routes()
 
 
 @routes.get_or_post("/profile", name="profile", guards=[login_required()])
-async def profile_view(request: HttpRequest, session: DbSession) -> Response:
+async def profile_view(request: Request, session: DbSession) -> Response:
     data = await request.form()
     profile_form = EditProfileForm(data, obj=request.user)
     password_form = ChangePasswordForm(data)
 
-    if request.is_submitted:
+    if request.method == 'POST':
         user = await User.get(session, request.user.id)
         data = await request.form()
         if "_profile" in data and profile_form.validate():

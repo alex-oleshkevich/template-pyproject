@@ -14,7 +14,6 @@ from starlette.responses import Response
 from starlette_babel import gettext_lazy as _
 from starlette_flash import flash
 
-from {{cookiecutter.project_name}}.base.http import HttpRequest
 from {{cookiecutter.project_name}}.config.dependencies import Settings
 from {{cookiecutter.project_name}}.models.organizations import Member, MemberInvitation
 from {{cookiecutter.project_name}}.models.users import User

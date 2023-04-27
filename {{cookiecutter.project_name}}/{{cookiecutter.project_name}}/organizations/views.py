@@ -9,7 +9,6 @@ from starlette.responses import Response
 from starlette_babel import gettext_lazy as _
 from starlette_flash import flash
 
-from {{cookiecutter.project_name}}.base.http import HttpRequest
 from {{cookiecutter.project_name}}.config.templating import templates
 from {{cookiecutter.project_name}}.organizations.forms import CreateOrganizationForm
 from {{cookiecutter.project_name}}.organizations.service import create_organization, get_user_organizations, select_organization
@@ -32,14 +31,14 @@ async def select_organization_view(request: Request, session: DbSession) -> Resp
             )
             return redirect_to_path(request, "manage")
 
-        flash(request).error(_("This school is not available for your account."))
+        flash(request).error(_("This organization is not available for your account."))
         return redirect_to_path(request, "organizations.select")
 
     return templates.TemplateResponse(
         request,
         "organizations/select.html",
         {
-            "page_title": _("Select school"),
+            "page_title": _("Select organization"),
             "objects": organizations,
         },
     )
@@ -72,7 +71,7 @@ async def new_organization_view(request: Request, session: DbSession) -> Respons
         request,
         "organizations/new.html",
         {
-            "page_title": _("Create school"),
+            "page_title": _("Create organization"),
             "form": form,
         },
     )

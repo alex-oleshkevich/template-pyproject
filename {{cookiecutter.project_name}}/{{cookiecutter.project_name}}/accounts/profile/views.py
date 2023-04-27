@@ -10,7 +10,6 @@ from starlette_flash import flash
 from {{cookiecutter.project_name}}.accounts.password_reset.mails import send_password_changed_mail
 from {{cookiecutter.project_name}}.accounts.passwords import check_password_hash
 from {{cookiecutter.project_name}}.accounts.profile.forms import ChangePasswordForm, EditProfileForm
-from {{cookiecutter.project_name}}.base.http import HttpRequest
 from {{cookiecutter.project_name}}.config.templating import templates
 from {{cookiecutter.project_name}}.models.users import User
 
